@@ -31,9 +31,6 @@
       "pre-commit": "lint-staged"
     }
   },
-  "standard": {
-    "parser": "babel-eslint"
-  },
   "lint-staged": {
     "*.js": [
       "./node_modules/.bin/standard --fix",
