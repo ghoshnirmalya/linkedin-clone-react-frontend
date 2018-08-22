@@ -1,9 +1,11 @@
-/* global cy, it, describe */
+/* global cy, it, describe, context */
 
-describe('Home page', function () {
-  it('Visits the Home page', function () {
-    cy.visit('http://localhost:3000/')
+describe('Index page', () => {
+  context('When a unauthenticated user visits the /index page', () => {
+    it('gets redirected to /auth page', () => {
+      cy.visit('http://localhost:3000/')
 
-    cy.contains('Welcome home!')
+      cy.location('pathname').should('eq', '/auth')
+    })
   })
 })

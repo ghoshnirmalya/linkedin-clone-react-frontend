@@ -1,10 +1,26 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-import Home from '../../../pages/home'
+import PublicLayout from '../layout/public'
+import PrivateLayout from '../layout/private'
 
-export default class App extends React.Component {
+class App extends React.Component {
   render () {
-    return <Route exact path='/' render={() => <Home />} />
+    if (!this.props.authenticated) { return <PublicLayout history={this.props.history} /> }
+
+    return (
+      <PrivateLayout
+        invalidateUser={this.props.invalidateUser}
+        history={this.props.history}
+      />
+    )
   }
 }
+
+App.propTypes = {
+  authentication: PropTypes.object,
+  history: PropTypes.object,
+  invalidateUser: PropTypes.func
+}
+
+export default App
