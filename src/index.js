@@ -6,6 +6,8 @@ import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from './store'
 import App from './containers/app'
 
+import 'antd/dist/antd.css'
+
 require('dotenv').config()
 
 render(

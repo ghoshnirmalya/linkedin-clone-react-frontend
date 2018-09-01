@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
+import { Col } from 'antd'
 
-class AuthPage extends Component {
+import Form from '../../containers/auth/form'
+
+class Auth extends Component {
   render () {
-    return <div>Auth</div>
+    return (
+      <Col span={8}>
+        <Form />
+      </Col>
+    )
   }
 }
 
-export default AuthPage
+export default Auth

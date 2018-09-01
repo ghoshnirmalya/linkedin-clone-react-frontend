@@ -1,10 +1,11 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import TokenStore from '../../lib/token-store'
 import App from '../../components/functional/app'
 
 const mapStateToProps = state => ({
-  authenticated: false
+  authenticated: TokenStore.apiToken
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch)
