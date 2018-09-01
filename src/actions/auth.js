@@ -1,7 +1,7 @@
 import constants from '../constants/auth'
 import TokenStore from '../lib/token-store'
 
-export const authenticate = ({ email, password }) => async dispatch => {
+export const signIn = ({ email, password }) => async dispatch => {
   dispatch({
     type: constants.AUTH_REQUEST
   })

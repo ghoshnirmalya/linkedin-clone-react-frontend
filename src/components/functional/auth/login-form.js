@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Form, Icon, Input, Button } from 'antd'
 
 class LoginForm extends Component {
@@ -7,7 +8,7 @@ class LoginForm extends Component {
 
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.props.authenticate(values)
+        this.props.signIn(values)
       }
     })
   };
@@ -53,6 +54,11 @@ class LoginForm extends Component {
       </Form>
     )
   };
+}
+
+LoginForm.propTypes = {
+  authenticationUI: PropTypes.object.isRequired,
+  signIn: PropTypes.func.isRequired
 }
 
 const WrappedLoginForm = Form.create()(LoginForm)
