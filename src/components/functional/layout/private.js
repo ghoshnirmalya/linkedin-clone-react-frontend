@@ -28,6 +28,13 @@ class PrivateLayout extends Component {
     }
   });
 
+  static LazyCompanies = Loadable({
+    loader: () => import('../../../pages/companies'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
   render = () => {
     if (['/auth', '/'].indexOf(this.props.history.location.pathname) > -1) {
       return <Redirect to='/home' />
@@ -41,6 +48,9 @@ class PrivateLayout extends Component {
             <Menu.Item key='users'>
               <NavLink to='/users'>Users</NavLink>
             </Menu.Item>
+            <Menu.Item key='companies'>
+              <NavLink to='/companies'>Companies</NavLink>
+            </Menu.Item>
           </Menu>
         </Layout.Header>
         <Layout.Content>
@@ -48,6 +58,11 @@ class PrivateLayout extends Component {
             <Switch>
               <Route exact path='/home' component={PrivateLayout.LazyHome} />
               <Route exact path='/users' component={PrivateLayout.LazyUsers} />
+              <Route
+                exact
+                path='/companies'
+                component={PrivateLayout.LazyCompanies}
+              />
             </Switch>
           </PrivateLayout.Container>
         </Layout.Content>
