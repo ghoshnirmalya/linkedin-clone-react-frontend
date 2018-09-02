@@ -13,9 +13,11 @@
   "dependencies": {
     "antd": "^3.8.4",
     "immer": "^1.5.0",
+    "kitsu": "^6.3.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-loadable": "^5.5.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

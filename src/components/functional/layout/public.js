@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect, NavLink } from 'react-router-dom'
 import { Layout, Menu, Row, Col } from 'antd'
-
-import asyncComponent from '../../../lib/async-component'
-
-const AsyncAuth = asyncComponent(() => import('../../../pages/auth'))
+import Loadable from 'react-loadable'
 
 class PublicLayout extends Component {
   static Container = props => (
@@ -16,6 +13,13 @@ class PublicLayout extends Component {
       <Col span={6}>{props.children}</Col>
     </Row>
   );
+
+  static LazyAuth = Loadable({
+    loader: () => import('../../../pages/auth'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
 
   render = () => {
     if (this.props.history.location.pathname !== '/auth') {
@@ -35,7 +39,7 @@ class PublicLayout extends Component {
         <Layout.Content>
           <PublicLayout.Container>
             <Switch>
-              <Route exact path='/auth' component={AsyncAuth} />
+              <Route exact path='/auth' component={PublicLayout.LazyAuth} />
             </Switch>
           </PublicLayout.Container>
         </Layout.Content>

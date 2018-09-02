@@ -1,17 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import PublicLayout from '../layout/public'
-import PrivateLayout from '../layout/private'
+import Loadable from 'react-loadable'
 
 class App extends React.Component {
+  static LazyPublicLayout = Loadable({
+    loader: () => import('../layout/public'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
+  static LazyPrivateLayout = Loadable({
+    loader: () => import('../layout/private'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
   render = () => {
     if (!this.props.authenticated) {
-      return <PublicLayout history={this.props.history} />
+      return <App.LazyPublicLayout history={this.props.history} />
     }
 
     return (
-      <PrivateLayout
+      <App.LazyPrivateLayout
         invalidateUser={this.props.invalidateUser}
         history={this.props.history}
       />

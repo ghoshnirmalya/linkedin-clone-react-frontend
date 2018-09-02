@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect, NavLink } from 'react-router-dom'
 import { Layout, Menu, Row, Col } from 'antd'
-
-import asyncComponent from '../../../lib/async-component'
-
-const AsyncHome = asyncComponent(() => import('../../../pages/home'))
-const AsyncUsers = asyncComponent(() => import('../../../pages/users'))
+import Loadable from 'react-loadable'
 
 class PrivateLayout extends Component {
   static Container = props => (
@@ -17,6 +13,20 @@ class PrivateLayout extends Component {
       <Col span={18}>{props.children}</Col>
     </Row>
   );
+
+  static LazyHome = Loadable({
+    loader: () => import('../../../pages/home'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
+  static LazyUsers = Loadable({
+    loader: () => import('../../../pages/users'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
 
   render = () => {
     if (this.props.history.location.pathname === '/auth') {
@@ -36,8 +46,8 @@ class PrivateLayout extends Component {
         <Layout.Content>
           <PrivateLayout.Container>
             <Switch>
-              <Route exact path='/' component={AsyncHome} />
-              <Route exact path='/users' component={AsyncUsers} />
+              <Route exact path='/' component={PrivateLayout.LazyHome} />
+              <Route exact path='/users' component={PrivateLayout.LazyUsers} />
             </Switch>
           </PrivateLayout.Container>
         </Layout.Content>
