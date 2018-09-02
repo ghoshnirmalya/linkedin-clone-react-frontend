@@ -21,8 +21,15 @@ class PublicLayout extends Component {
     }
   });
 
+  static LazyIndex = Loadable({
+    loader: () => import('../../../pages/index'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
   render = () => {
-    if (this.props.history.location.pathname !== '/auth') {
+    if (['/auth', '/'].indexOf(this.props.history.location.pathname) === -1) {
       return <Redirect to='/auth' />
     }
 
@@ -40,6 +47,7 @@ class PublicLayout extends Component {
           <PublicLayout.Container>
             <Switch>
               <Route exact path='/auth' component={PublicLayout.LazyAuth} />
+              <Route exact path='/' component={PublicLayout.LazyIndex} />
             </Switch>
           </PublicLayout.Container>
         </Layout.Content>

@@ -5,7 +5,7 @@ import TokenStore from '../../lib/token-store'
 import App from '../../components/functional/app'
 
 const mapStateToProps = state => ({
-  authenticated: TokenStore.apiToken
+  authenticated: !!TokenStore.apiToken
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch)

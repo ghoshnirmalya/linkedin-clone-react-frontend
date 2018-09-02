@@ -29,8 +29,8 @@ class PrivateLayout extends Component {
   });
 
   render = () => {
-    if (this.props.history.location.pathname === '/auth') {
-      return <Redirect to='/' />
+    if (['/auth', '/'].indexOf(this.props.history.location.pathname) > -1) {
+      return <Redirect to='/home' />
     }
 
     return (
@@ -46,7 +46,7 @@ class PrivateLayout extends Component {
         <Layout.Content>
           <PrivateLayout.Container>
             <Switch>
-              <Route exact path='/' component={PrivateLayout.LazyHome} />
+              <Route exact path='/home' component={PrivateLayout.LazyHome} />
               <Route exact path='/users' component={PrivateLayout.LazyUsers} />
             </Switch>
           </PrivateLayout.Container>
