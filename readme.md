@@ -14,13 +14,13 @@ Installing the app is very simple and consists of the following steps:
 #### Step 1: Clone the app
 
 ```
-git clone git@github.com:ghoshnirmalya/custom-react-boilerplate.git
+git clone git@github.com:ghoshnirmalya/linkedin-react.git
 ```
 
 #### Step 2: Go inside the app folder
 
 ```
-cd custom-react-boilerplate
+cd linkedin-react
 ```
 
 #### Step 3: Install the necessary packages

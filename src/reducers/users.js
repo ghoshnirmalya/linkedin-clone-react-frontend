@@ -15,6 +15,7 @@ export default produce((draft, action) => {
   switch (action.type) {
     case constants.FETCH_USERS_REQUEST:
       draft.ui.loading = true
+      draft.users = []
 
       break
 
