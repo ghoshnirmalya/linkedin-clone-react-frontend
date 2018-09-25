@@ -16,7 +16,7 @@ export const fetchCompanies = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: constants.FETCH_COMPANIES_FAILURE,
-      errorMessage: error.statusText
+      errorMessage: error
     })
   }
 }

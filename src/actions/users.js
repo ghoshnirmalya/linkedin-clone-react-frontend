@@ -16,7 +16,7 @@ export const fetchUsers = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: constants.FETCH_USERS_FAILURE,
-      errorMessage: error.statusText
+      errorMessage: error
     })
   }
 }
