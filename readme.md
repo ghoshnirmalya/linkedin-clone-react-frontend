@@ -41,7 +41,7 @@ yarn install
 yarn start
 ```
 
-The app will be running at [localhost:3000](http://localhost:3000/).
+The app will be running at [localhost:3001](http://localhost:3000/).
 
 ### Testing
 
