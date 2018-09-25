@@ -34,10 +34,10 @@ class PublicLayout extends Component {
     }
 
     return (
-      <Layout className='layout'>
-        <Layout.Header style={{ backgroundColor: '#fff' }}>
+      <Layout>
+        <Layout.Header>
           <div className='logo' />
-          <Menu mode='horizontal' style={{ lineHeight: '64px' }}>
+          <Menu mode='horizontal' style={{ lineHeight: '64px' }} theme='dark'>
             <Menu.Item key='auth'>
               <NavLink to='/auth'>Auth</NavLink>
             </Menu.Item>

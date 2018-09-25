@@ -14,6 +14,16 @@ class PrivateLayout extends Component {
     </Row>
   );
 
+  static MenuContainer = props => (
+    <Row
+      type='flex'
+      justify='center'
+      style={{ margin: '0 -24px' }}
+    >
+      <Col span={18}>{props.children}</Col>
+    </Row>
+  );
+
   static LazyHome = Loadable({
     loader: () => import('../../../pages/home'),
     loading () {
@@ -41,17 +51,19 @@ class PrivateLayout extends Component {
     }
 
     return (
-      <Layout className='layout'>
-        <Layout.Header style={{ backgroundColor: '#fff' }}>
-          <div className='logo' />
-          <Menu mode='horizontal' style={{ lineHeight: '64px' }}>
-            <Menu.Item key='users'>
-              <NavLink to='/users'>Users</NavLink>
-            </Menu.Item>
-            <Menu.Item key='companies'>
-              <NavLink to='/companies'>Companies</NavLink>
-            </Menu.Item>
-          </Menu>
+      <Layout>
+        <Layout.Header>
+          <PrivateLayout.MenuContainer>
+            <div className='logo' />
+            <Menu mode='horizontal' style={{ lineHeight: '64px' }} theme='dark'>
+              <Menu.Item key='users'>
+                <NavLink to='/users'>Users</NavLink>
+              </Menu.Item>
+              <Menu.Item key='companies'>
+                <NavLink to='/companies'>Companies</NavLink>
+              </Menu.Item>
+            </Menu>
+          </PrivateLayout.MenuContainer>
         </Layout.Header>
         <Layout.Content>
           <PrivateLayout.Container>
