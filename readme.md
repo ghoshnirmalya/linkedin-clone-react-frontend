@@ -1,3 +1,9 @@
+# Frontend for a software similar to LinkedIn
+
+[![Build Status](https://travis-ci.org/ghoshnirmalya/linkedin-react.svg?branch=master)](https://travis-ci.org/ghoshnirmalya/linkedin-react)
+
+A clone of LinkedIn software with basic functionalities.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
