@@ -3,7 +3,7 @@ import produce from 'immer'
 import constants from '../constants/users'
 
 const initialState = {
-  users: [],
+  users: {},
   ui: {
     loading: false,
     doneLoading: false,
@@ -15,12 +15,14 @@ export default produce((draft, action) => {
   switch (action.type) {
     case constants.FETCH_USERS_REQUEST:
       draft.ui.loading = true
-      draft.users = []
+      draft.users = {}
 
       break
 
     case constants.FETCH_USERS_SUCCESS:
-      draft.users.push(...action.users)
+      action.users.forEach(user => {
+        draft.users[user.id] = user
+      })
       draft.ui.loading = false
       draft.ui.doneLoading = true
       draft.ui.loadError = ''

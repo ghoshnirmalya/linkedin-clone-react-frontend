@@ -1,11 +1,12 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import toArray from 'lodash/toArray'
 
 import List from '../../components/functional/companies/list'
 import { fetchCompanies } from '../../actions/companies'
 
 const mapStateToProps = state => ({
-  companies: state.companies.companies,
+  companies: toArray(state.companies.companies),
   companiesUI: state.companies.ui
 })
 
