@@ -29,7 +29,7 @@
   "scripts": {
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "cypress": "./node_modules/.bin/cypress open"
   },
@@ -59,9 +59,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/"
+      "src/actions/**/*.js",
+      "src/reducers/**/*.js"
     ],
     "coverageThreshold": {
       "global": {
