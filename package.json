@@ -14,7 +14,7 @@
   "dependencies": {
     "antd": "^3.8.4",
     "immer": "^1.5.0",
-    "kitsu": "^5.0.0",
+    "kitsu": "5.2.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
