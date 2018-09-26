@@ -1,0 +1,10 @@
+version: '3'
+services:
+  linkedin.react.web:
+    build: .
+    command: yarn start
+    volumes:
+      - .:/app
+      - '/app/node_modules'
+    ports:
+      - '3001:3001'

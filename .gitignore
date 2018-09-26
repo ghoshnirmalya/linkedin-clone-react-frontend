@@ -55,5 +55,11 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
+# Ignore .env.development
+.env.development
+
+# Ignore .env.test
+.env.test
+
+# Ignore .env.production
+.env.production

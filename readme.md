@@ -10,8 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- [Node 10.8.0](https://nodejs.org/en/)
-- [Yarn](https://yarnpkg.com/en/docs/install)
+- [Docker](https://docs.docker.com/)
 
 ### Installing
 
@@ -20,33 +19,29 @@ Installing the app is very simple and consists of the following steps:
 #### Step 1: Clone the app
 
 ```
-git clone git@github.com:ghoshnirmalya/linkedin-react.git
+git clone git@github.com:ghoshnirmalya/linkedin-react.git && cd linkedin-react
 ```
 
-#### Step 2: Go inside the app folder
+#### 2. Build the project
 
 ```
-cd linkedin-react
+docker-compose build
 ```
 
-#### Step 3: Install the necessary packages
+#### 3. Copy the env files
 
 ```
-yarn install
-```
-
-#### Step 4: Run the app
-
-```
-yarn start
+cp .env.development.example .env.development && cp .env.test.example .env.test
 ```
 
 The app will be running at [localhost:3001](http://localhost:3000/).
 
-### Testing
+## Running the tests
+
+You can run all the specs using the following command:
 
 ```
-yarn test
+docker exec -it linkedin-react_linkedin.react.web_1 yarn test --watch
 ```
 
 Jest will run all your tests. If you don't have a test file, it'll show the following error:
@@ -63,12 +58,6 @@ Watch Usage
  › Press Enter to trigger a test run.
 ```
 
-You can run e2e tests using Cypress:
-
-```
-yarn cypress
-```
-
 ### Building the app
 
 You can create a production build of you app using the following command:
@@ -83,4 +72,12 @@ yarn build
 - [Redux](https://redux.js.org/) - Redux is a predictable state container for JavaScript apps
 - [React Router](https://reacttraining.com/react-router/) - React Router is a collection of navigational components that compose declaratively with your application.
 - [Create React App](https://github.com/facebookincubator/create-react-app/) - Create React apps with no build configuration.
-- [Cypress](https://www.cypress.io/) - Fast, easy and reliable testing for anything that runs in a browser.
+- [Docker](https://www.docker.com/) - Used to containerize the app
+
+## Contributing
+
+If you find any bugs, please feel free to create an issue for that.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
