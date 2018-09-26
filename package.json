@@ -74,10 +74,5 @@
     "coverageReporters": [
       "text"
     ]
-  },
-  "greenkeeper": {
-    "ignore": [
-      "kitsu"
-    ]
   }
 }
