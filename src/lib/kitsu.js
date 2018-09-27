@@ -1,4 +1,4 @@
-import Kitsu from 'kitsu/legacy'
+import Kitsu from 'kitsu'
 
 import TokenStore from './token-store'
 

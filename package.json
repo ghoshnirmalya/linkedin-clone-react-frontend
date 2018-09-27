@@ -9,12 +9,12 @@
     "lint-staged": "^7.2.2",
     "react-scripts": "^2.0.0",
     "redux-mock-store": "^1.5.3",
-    "standard": "^11.0.1"
+    "standard": "^12.0.1"
   },
   "dependencies": {
     "antd": "^3.8.4",
     "immer": "^1.5.0",
-    "kitsu": "5.2.2",
+    "kitsu": "^6.4.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -73,5 +73,11 @@
     "coverageReporters": [
       "text"
     ]
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
