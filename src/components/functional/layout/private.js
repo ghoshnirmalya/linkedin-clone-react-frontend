@@ -55,7 +55,7 @@ class PrivateLayout extends Component {
         <Layout.Header>
           <PrivateLayout.MenuContainer>
             <div className='logo' />
-            <Menu mode='horizontal' style={{ lineHeight: '64px' }} theme='dark'>
+            <Menu mode='horizontal' style={{ lineHeight: '64px', margin: '0 24px' }} theme='dark'>
               <Menu.Item key='users'>
                 <NavLink to='/users'>Users</NavLink>
               </Menu.Item>

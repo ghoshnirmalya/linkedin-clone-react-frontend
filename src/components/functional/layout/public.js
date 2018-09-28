@@ -14,6 +14,12 @@ class PublicLayout extends Component {
     </Row>
   );
 
+  static MenuContainer = props => (
+    <Row type='flex' justify='center' style={{ margin: '0 -24px' }}>
+      <Col span={18}>{props.children}</Col>
+    </Row>
+  );
+
   static LazyAuth = Loadable({
     loader: () => import('../../../pages/auth'),
     loading () {
@@ -33,26 +39,26 @@ class PublicLayout extends Component {
       return <Redirect to='/auth' />
     }
 
-    return (
-      <Layout>
-        <Layout.Header>
+    return <Layout>
+      <Layout.Header>
+        <PublicLayout.MenuContainer>
           <div className='logo' />
-          <Menu mode='horizontal' style={{ lineHeight: '64px' }} theme='dark'>
+          <Menu mode='horizontal' style={{ lineHeight: '64px', margin: '0 24px' }} theme='dark'>
             <Menu.Item key='auth'>
               <NavLink to='/auth'>Auth</NavLink>
             </Menu.Item>
           </Menu>
-        </Layout.Header>
-        <Layout.Content>
-          <PublicLayout.Container>
-            <Switch>
-              <Route exact path='/auth' component={PublicLayout.LazyAuth} />
-              <Route exact path='/' component={PublicLayout.LazyIndex} />
-            </Switch>
-          </PublicLayout.Container>
-        </Layout.Content>
-      </Layout>
-    )
+        </PublicLayout.MenuContainer>
+      </Layout.Header>
+      <Layout.Content>
+        <PublicLayout.Container>
+          <Switch>
+            <Route exact path='/auth' component={PublicLayout.LazyAuth} />
+            <Route exact path='/' component={PublicLayout.LazyIndex} />
+          </Switch>
+        </PublicLayout.Container>
+      </Layout.Content>
+    </Layout>
   };
 }
 
