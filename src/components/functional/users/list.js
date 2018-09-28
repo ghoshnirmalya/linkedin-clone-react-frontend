@@ -15,7 +15,7 @@ class UsersList extends Component {
         dataSource={this.props.users}
         renderItem={item => (
           <List.Item>
-            <Card title={item.name} hoverable>
+            <Card title={item.name} hoverable bordered={false}>
               {item.email}
             </Card>
           </List.Item>

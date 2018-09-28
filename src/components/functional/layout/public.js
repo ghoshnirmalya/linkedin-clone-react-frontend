@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Switch, Route, Redirect, NavLink } from 'react-router-dom'
-import { Layout, Menu, Row, Col } from 'antd'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { Layout, Row, Col } from 'antd'
 import Loadable from 'react-loadable'
 
 class PublicLayout extends Component {
@@ -33,26 +33,16 @@ class PublicLayout extends Component {
       return <Redirect to='/auth' />
     }
 
-    return (
-      <Layout>
-        <Layout.Header>
-          <div className='logo' />
-          <Menu mode='horizontal' style={{ lineHeight: '64px' }} theme='dark'>
-            <Menu.Item key='auth'>
-              <NavLink to='/auth'>Auth</NavLink>
-            </Menu.Item>
-          </Menu>
-        </Layout.Header>
-        <Layout.Content>
-          <PublicLayout.Container>
-            <Switch>
-              <Route exact path='/auth' component={PublicLayout.LazyAuth} />
-              <Route exact path='/' component={PublicLayout.LazyIndex} />
-            </Switch>
-          </PublicLayout.Container>
-        </Layout.Content>
-      </Layout>
-    )
+    return <Layout>
+      <Layout.Content>
+        <PublicLayout.Container>
+          <Switch>
+            <Route exact path='/auth' component={PublicLayout.LazyAuth} />
+            <Route exact path='/' component={PublicLayout.LazyIndex} />
+          </Switch>
+        </PublicLayout.Container>
+      </Layout.Content>
+    </Layout>
   };
 }
 

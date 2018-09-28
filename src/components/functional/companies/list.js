@@ -15,7 +15,7 @@ class CompaniesList extends Component {
         dataSource={this.props.companies}
         renderItem={item => (
           <List.Item>
-            <Card title={item.name} hoverable>
+            <Card title={item.name} hoverable bordered={false}>
               {item.name}
             </Card>
           </List.Item>

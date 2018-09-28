@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect, NavLink } from 'react-router-dom'
-import { Layout, Menu, Row, Col } from 'antd'
+import { Layout, Menu, Row, Col, Icon } from 'antd'
 import Loadable from 'react-loadable'
+
+import Logo from '../../../assets/images/logo.png'
 
 class PrivateLayout extends Component {
   static Container = props => (
@@ -9,16 +11,6 @@ class PrivateLayout extends Component {
       type='flex'
       justify='center'
       style={{ margin: '50px', minHeight: '100vh' }}
-    >
-      <Col span={18}>{props.children}</Col>
-    </Row>
-  );
-
-  static MenuContainer = props => (
-    <Row
-      type='flex'
-      justify='center'
-      style={{ margin: '0 -24px' }}
     >
       <Col span={18}>{props.children}</Col>
     </Row>
@@ -50,36 +42,38 @@ class PrivateLayout extends Component {
       return <Redirect to='/home' />
     }
 
-    return (
-      <Layout>
-        <Layout.Header>
-          <PrivateLayout.MenuContainer>
-            <div className='logo' />
-            <Menu mode='horizontal' style={{ lineHeight: '64px' }} theme='dark'>
-              <Menu.Item key='users'>
-                <NavLink to='/users'>Users</NavLink>
-              </Menu.Item>
-              <Menu.Item key='companies'>
-                <NavLink to='/companies'>Companies</NavLink>
-              </Menu.Item>
-            </Menu>
-          </PrivateLayout.MenuContainer>
-        </Layout.Header>
-        <Layout.Content>
-          <PrivateLayout.Container>
-            <Switch>
-              <Route exact path='/home' component={PrivateLayout.LazyHome} />
-              <Route exact path='/users' component={PrivateLayout.LazyUsers} />
-              <Route
-                exact
-                path='/companies'
-                component={PrivateLayout.LazyCompanies}
-              />
-            </Switch>
-          </PrivateLayout.Container>
-        </Layout.Content>
-      </Layout>
-    )
+    return <Layout>
+      <Layout.Sider width={200} style={{ background: '#fff' }} collapsible collapsed trigger={null}>
+        <Menu style={{ borderRight: 0 }} mode='inline' selectable={false}>
+          <Menu.Item key='logo'>
+            <NavLink to='/home'>
+              <img src={Logo} alt='logo' style={{ width: '16px' }} />
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key='users'>
+            <NavLink to='/users'>
+              <Icon type='smile' theme='filled' />
+              <span>Users</span>
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key='companies'>
+            <NavLink to='/companies'>
+              <Icon type='bank' theme='filled' />
+              <span>Companies</span>
+            </NavLink>
+          </Menu.Item>
+        </Menu>
+      </Layout.Sider>
+      <Layout.Content>
+        <PrivateLayout.Container>
+          <Switch>
+            <Route exact path='/home' component={PrivateLayout.LazyHome} />
+            <Route exact path='/users' component={PrivateLayout.LazyUsers} />
+            <Route exact path='/companies' component={PrivateLayout.LazyCompanies} />
+          </Switch>
+        </PrivateLayout.Container>
+      </Layout.Content>
+    </Layout>
   };
 }
 
