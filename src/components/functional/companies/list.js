@@ -43,7 +43,10 @@ class CompaniesList extends Component {
 
 CompaniesList.propTypes = {
   companiesUI: PropTypes.object,
-  fetchCompanies: PropTypes.func.isRequired
+  fetchCompanies: PropTypes.func.isRequired,
+  resetCompanies: PropTypes.func.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired
 }
 
 export default CompaniesList

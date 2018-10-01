@@ -4,6 +4,8 @@ import constants from '../constants/users'
 
 const initialState = {
   users: {},
+  currentPage: 1,
+  totalPages: 0,
   ui: {
     loading: false,
     doneLoading: false,
@@ -15,7 +17,6 @@ export default produce((draft, action) => {
   switch (action.type) {
     case constants.FETCH_USERS_REQUEST:
       draft.ui.loading = true
-      draft.users = {}
 
       break
 
@@ -35,6 +36,14 @@ export default produce((draft, action) => {
       draft.ui.loadError = action.errorMessage
 
       break
+
+    case constants.UPDATE_CURRENT_PAGE:
+      draft.currentPage = action.page
+
+      break
+
+    case constants.RESET_USERS:
+      return initialState
 
     default:
       break

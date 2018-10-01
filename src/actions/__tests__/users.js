@@ -26,7 +26,10 @@ describe('fetchUsers', () => {
               name: 'Jane Doe',
               email: 'jane@doe.com'
             }
-          }]
+          }],
+          links: {
+            last: 'http://localhost:3000/v1/users?page%5Bnumber%5D=10&page%5Bsize%5D=10'
+          }
         })
       const expectedActions = [{
         type: constants.FETCH_USERS_REQUEST
@@ -44,21 +47,27 @@ describe('fetchUsers', () => {
             name: 'Jane Doe',
             email: 'jane@doe.com'
           }
-        }]
+        }],
+        'totalPages': 10
       }]
+
       const store = mockStore({
-        locks: {},
-        ui: {
-          loading: false,
-          doneLoading: false,
-          loadError: ''
+        users: {
+          users: {},
+          currentPage: 1,
+          totalPages: 0,
+          ui: {
+            loading: false,
+            doneLoading: false,
+            loadError: ''
+          }
         }
       })
 
       await store.dispatch(actions.fetchUsers())
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('users')
+      expect(fetchSpy).toHaveBeenCalledWith('users', { page: 1 })
 
       fetchSpy.mockRestore()
     })
@@ -81,20 +90,77 @@ describe('fetchUsers', () => {
       ]
 
       const store = mockStore({
-        locks: {},
-        ui: {
-          loading: false,
-          doneLoading: false,
-          loadError: 'Not Found'
+        users: {
+          users: {},
+          currentPage: 1,
+          totalPages: 0,
+          ui: {
+            loading: false,
+            doneLoading: false,
+            loadError: 'Not Found'
+          }
         }
       })
 
       await store.dispatch(actions.fetchUsers())
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('users')
+      expect(fetchSpy).toHaveBeenCalledWith('users', { page: 1 })
 
       fetchSpy.mockRestore()
     })
+  })
+})
+
+describe('resetUsers', () => {
+  it('dispatches RESET_USERS', () => {
+    const expectedActions = [{ type: constants.RESET_USERS }]
+
+    const store = mockStore({
+      users: {
+        '1': { id: 1, name: 'John Doe' },
+        '2': { id: 2, name: 'Jane Doe' }
+      },
+      currentPage: 1,
+      totalPages: 10,
+      ui: {
+        loading: false,
+        doneLoading: true,
+        loadError: ''
+      }
+    })
+
+    store.dispatch(actions.resetUsers())
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+})
+
+describe('updateCurrentPage', () => {
+  it('dispatches UPDATE_CURRENT_PAGE', () => {
+    const expectedActions = [
+      {
+        type: constants.UPDATE_CURRENT_PAGE,
+        page: 1
+      }
+    ]
+
+    const store = mockStore({
+      users: {
+        '1': { id: 1, name: 'John Doe' },
+        '2': { id: 2, name: 'Jane Doe' }
+      },
+      currentPage: 1,
+      totalPages: 10,
+      ui: {
+        loading: false,
+        doneLoading: true,
+        loadError: ''
+      }
+    })
+
+    store.dispatch(actions.updateCurrentPage())
+
+    expect(store.getActions()).toEqual(expectedActions)
   })
 })
