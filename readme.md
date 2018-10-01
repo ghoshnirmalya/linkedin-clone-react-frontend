@@ -1,6 +1,6 @@
 # Frontend for a software similar to LinkedIn
 
-[![Build Status](https://travis-ci.org/ghoshnirmalya/linkedin-react.svg?branch=master)](https://travis-ci.org/ghoshnirmalya/linkedin-react)
+[![Build Status](https://travis-ci.org/ghoshnirmalya/linkedin-react.svg?branch=master)](https://travis-ci.org/ghoshnirmalya/linkedin-react) [![Greenkeeper badge](https://badges.greenkeeper.io/ghoshnirmalya/linkedin-react.svg)](https://greenkeeper.io/)
 
 A clone of LinkedIn software with basic functionalities.
 
