@@ -11,22 +11,27 @@ const mockStore = configureMockStore(middlewares)
 describe('fetchCompanies', () => {
   describe('on success', () => {
     it('dispatches FETCH_COMPANIES_REQUEST & FETCH_COMPANIES_SUCCESS', async () => {
-      const fetchSpy = jest.spyOn(api, 'get').mockReturnValue({
-        data: [
-          {
-            id: 1,
-            attributes: {
-              name: 'Company A'
+      const fetchSpy = jest
+        .spyOn(api, 'get')
+        .mockReturnValue({
+          data: [
+            {
+              id: 1,
+              attributes: {
+                name: 'Company A'
+              }
+            },
+            {
+              id: 2,
+              attributes: {
+                name: 'Company B'
+              }
             }
-          },
-          {
-            id: 2,
-            attributes: {
-              name: 'Company B'
-            }
+          ],
+          links: {
+            last: 'http://localhost:3000/v1/companies?page%5Bnumber%5D=10&page%5Bsize%5D=10'
           }
-        ]
-      })
+        })
       const expectedActions = [
         {
           type: constants.FETCH_COMPANIES_REQUEST
@@ -46,22 +51,27 @@ describe('fetchCompanies', () => {
                 name: 'Company B'
               }
             }
-          ]
+          ],
+          'totalPages': 10
         }
       ]
       const store = mockStore({
-        locks: {},
-        ui: {
-          loading: false,
-          doneLoading: false,
-          loadError: ''
+        companies: {
+          companies: {},
+          currentPage: 1,
+          totalPages: 0,
+          ui: {
+            loading: false,
+            doneLoading: false,
+            loadError: ''
+          }
         }
       })
 
       await store.dispatch(actions.fetchCompanies())
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('companies')
+      expect(fetchSpy).toHaveBeenCalledWith('companies', { page: 1 })
 
       fetchSpy.mockRestore()
     })
@@ -84,20 +94,77 @@ describe('fetchCompanies', () => {
       ]
 
       const store = mockStore({
-        locks: {},
-        ui: {
-          loading: false,
-          doneLoading: false,
-          loadError: 'Not Found'
+        companies: {
+          companies: {},
+          currentPage: 1,
+          totalPages: 0,
+          ui: {
+            loading: false,
+            doneLoading: false,
+            loadError: 'Not Found'
+          }
         }
       })
 
       await store.dispatch(actions.fetchCompanies())
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('companies')
+      expect(fetchSpy).toHaveBeenCalledWith('companies', { page: 1 })
 
       fetchSpy.mockRestore()
     })
+  })
+})
+
+describe('resetCompanies', () => {
+  it('dispatches RESET_COMPANIES', () => {
+    const expectedActions = [{ type: constants.RESET_COMPANIES }]
+
+    const store = mockStore({
+      companies: {
+        '1': { id: 1, name: 'John Doe' },
+        '2': { id: 2, name: 'Jane Doe' }
+      },
+      currentPage: 1,
+      totalPages: 10,
+      ui: {
+        loading: false,
+        doneLoading: true,
+        loadError: ''
+      }
+    })
+
+    store.dispatch(actions.resetCompanies())
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+})
+
+describe('updateCurrentPage', () => {
+  it('dispatches UPDATE_CURRENT_PAGE', () => {
+    const expectedActions = [
+      {
+        type: constants.UPDATE_CURRENT_PAGE,
+        page: 1
+      }
+    ]
+
+    const store = mockStore({
+      companies: {
+        '1': { id: 1, name: 'John Doe' },
+        '2': { id: 2, name: 'Jane Doe' }
+      },
+      currentPage: 1,
+      totalPages: 10,
+      ui: {
+        loading: false,
+        doneLoading: true,
+        loadError: ''
+      }
+    })
+
+    store.dispatch(actions.updateCurrentPage())
+
+    expect(store.getActions()).toEqual(expectedActions)
   })
 })
