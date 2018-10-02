@@ -24,6 +24,7 @@ export default produce((draft, action) => {
       action.users.forEach(user => {
         draft.users[user.id] = user
       })
+      draft.totalPages = action.totalPages
       draft.ui.loading = false
       draft.ui.doneLoading = true
       draft.ui.loadError = ''

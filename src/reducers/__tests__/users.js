@@ -56,7 +56,8 @@ it('handles FETCH_USERS_SUCCESS', () => {
 
   const nextState = reducer(prevState, {
     type: constants.FETCH_USERS_SUCCESS,
-    users: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }]
+    users: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
+    totalPages: 10
   })
 
   expect(nextState).toEqual({
@@ -65,7 +66,7 @@ it('handles FETCH_USERS_SUCCESS', () => {
       '2': { id: 2, name: 'Jane Doe' }
     },
     currentPage: 1,
-    totalPages: 0,
+    totalPages: 10,
     ui: {
       loading: false,
       doneLoading: true,
