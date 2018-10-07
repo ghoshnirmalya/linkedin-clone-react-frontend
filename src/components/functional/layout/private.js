@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Switch, Route, Redirect, NavLink } from 'react-router-dom'
 import { Layout, Menu, Row, Col, Icon } from 'antd'
 import Loadable from 'react-loadable'
@@ -37,6 +38,13 @@ class PrivateLayout extends Component {
     }
   });
 
+  static LazyCompaniesNew = Loadable({
+    loader: () => import('../../../pages/companies/new'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
   render = () => {
     if (['/auth', '/'].indexOf(this.props.history.location.pathname) > -1) {
       return <Redirect to='/home' />
@@ -70,11 +78,16 @@ class PrivateLayout extends Component {
             <Route exact path='/home' component={PrivateLayout.LazyHome} />
             <Route exact path='/users' component={PrivateLayout.LazyUsers} />
             <Route exact path='/companies' component={PrivateLayout.LazyCompanies} />
+            <Route exact path='/companies/new' component={PrivateLayout.LazyCompaniesNew} />
           </Switch>
         </PrivateLayout.Container>
       </Layout.Content>
     </Layout>
   };
+}
+
+PrivateLayout.propTypes = {
+  history: PropTypes.object
 }
 
 export default PrivateLayout

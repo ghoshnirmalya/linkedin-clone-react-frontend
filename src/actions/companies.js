@@ -34,7 +34,7 @@ export const resetCompanies = () => dispatch => {
   })
 }
 
-export const updateCurrentPage = (page = 1) => (dispatch, getState) => {
+export const updateCurrentPage = (page = 1) => dispatch => {
   dispatch({
     type: constants.UPDATE_CURRENT_PAGE,
     page
