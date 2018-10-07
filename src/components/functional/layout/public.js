@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { Layout, Row, Col } from 'antd'
+import { Layout, Row } from 'antd'
 import Loadable from 'react-loadable'
 
 class PublicLayout extends Component {
@@ -8,9 +8,9 @@ class PublicLayout extends Component {
     <Row
       type='flex'
       justify='center'
-      style={{ margin: '50px', minHeight: '100vh' }}
+      style={{ minHeight: '100vh' }}
     >
-      <Col span={6}>{props.children}</Col>
+      {props.children}
     </Row>
   );
 
