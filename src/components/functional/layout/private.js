@@ -45,44 +45,72 @@ class PrivateLayout extends Component {
     }
   });
 
+  static LazyCompaniesShow = Loadable({
+    loader: () => import('../../../pages/companies/show'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
   render = () => {
     if (['/auth', '/'].indexOf(this.props.history.location.pathname) > -1) {
       return <Redirect to='/home' />
     }
 
-    return <Layout>
-      <Layout.Sider width={200} style={{ background: '#fff' }} collapsible collapsed trigger={null}>
-        <Menu style={{ borderRight: 0 }} mode='inline' selectable={false}>
-          <Menu.Item key='logo'>
-            <NavLink to='/home'>
-              <img src={Logo} alt='logo' style={{ width: '16px' }} />
-            </NavLink>
-          </Menu.Item>
-          <Menu.Item key='users'>
-            <NavLink to='/users'>
-              <Icon type='smile' theme='filled' />
-              <span>Users</span>
-            </NavLink>
-          </Menu.Item>
-          <Menu.Item key='companies'>
-            <NavLink to='/companies'>
-              <Icon type='bank' theme='filled' />
-              <span>Companies</span>
-            </NavLink>
-          </Menu.Item>
-        </Menu>
-      </Layout.Sider>
-      <Layout.Content>
-        <PrivateLayout.Container>
-          <Switch>
-            <Route exact path='/home' component={PrivateLayout.LazyHome} />
-            <Route exact path='/users' component={PrivateLayout.LazyUsers} />
-            <Route exact path='/companies' component={PrivateLayout.LazyCompanies} />
-            <Route exact path='/companies/new' component={PrivateLayout.LazyCompaniesNew} />
-          </Switch>
-        </PrivateLayout.Container>
-      </Layout.Content>
-    </Layout>
+    return (
+      <Layout>
+        <Layout.Sider
+          width={200}
+          style={{ background: '#fff' }}
+          collapsible
+          collapsed
+          trigger={null}
+        >
+          <Menu style={{ borderRight: 0 }} mode='inline' selectable={false}>
+            <Menu.Item key='logo'>
+              <NavLink to='/home'>
+                <img src={Logo} alt='logo' style={{ width: '16px' }} />
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key='users'>
+              <NavLink to='/users'>
+                <Icon type='smile' theme='filled' />
+                <span>Users</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key='companies'>
+              <NavLink to='/companies'>
+                <Icon type='bank' theme='filled' />
+                <span>Companies</span>
+              </NavLink>
+            </Menu.Item>
+          </Menu>
+        </Layout.Sider>
+        <Layout.Content>
+          <PrivateLayout.Container>
+            <Switch>
+              <Route exact path='/home' component={PrivateLayout.LazyHome} />
+              <Route exact path='/users' component={PrivateLayout.LazyUsers} />
+              <Route
+                exact
+                path='/companies'
+                component={PrivateLayout.LazyCompanies}
+              />
+              <Route
+                exact
+                path='/companies/new'
+                component={PrivateLayout.LazyCompaniesNew}
+              />
+              <Route
+                exact
+                path='/companies/:id'
+                component={PrivateLayout.LazyCompaniesShow}
+              />
+            </Switch>
+          </PrivateLayout.Container>
+        </Layout.Content>
+      </Layout>
+    )
   };
 }
 

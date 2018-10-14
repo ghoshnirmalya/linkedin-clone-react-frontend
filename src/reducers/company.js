@@ -7,7 +7,10 @@ const initialState = {
   ui: {
     saving: false,
     doneSaving: false,
-    saveError: ''
+    saveError: '',
+    fetching: false,
+    doneFetching: false,
+    fetchError: ''
   }
 }
 
@@ -32,6 +35,34 @@ export default produce((draft, action) => {
       draft.ui.saveError = action.errorMessage
 
       break
+
+    case constants.FETCH_COMPANY_REQUEST:
+      draft.ui.fetching = true
+
+      break
+
+    case constants.FETCH_COMPANY_SUCCESS:
+      draft.company = action.company
+      draft.ui.fetching = false
+      draft.ui.doneFetching = true
+      draft.ui.fetchError = ''
+
+      break
+
+    case constants.FETCH_COMPANY_FAILURE:
+      draft.ui.fetching = false
+      draft.ui.doneFetching = false
+      draft.ui.fetchError = action.errorMessage
+
+      break
+
+    case constants.UPDATE_COMPANY:
+      draft.company[action.key] = action.value
+
+      break
+
+    case constants.RESET_COMPANY:
+      return initialState
 
     default:
       break
