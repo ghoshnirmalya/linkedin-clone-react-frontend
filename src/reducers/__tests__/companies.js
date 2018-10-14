@@ -7,9 +7,9 @@ it('returns the initial state', () => {
     currentPage: 1,
     totalPages: 0,
     ui: {
-      loading: false,
-      doneLoading: false,
-      loadError: ''
+      fetching: false,
+      doneFetching: false,
+      fetchError: ''
     }
   })
 })
@@ -20,9 +20,9 @@ it('handles FETCH_COMPANIES_REQUEST', () => {
     currentPage: 1,
     totalPages: 0,
     ui: {
-      loading: false,
-      doneLoading: false,
-      loadError: ''
+      fetching: false,
+      doneFetching: false,
+      fetchError: ''
     }
   }
 
@@ -35,9 +35,9 @@ it('handles FETCH_COMPANIES_REQUEST', () => {
     currentPage: 1,
     totalPages: 0,
     ui: {
-      loading: true,
-      doneLoading: false,
-      loadError: ''
+      fetching: true,
+      doneFetching: false,
+      fetchError: ''
     }
   })
 })
@@ -48,9 +48,9 @@ it('handles FETCH_COMPANIES_SUCCESS', () => {
     currentPage: 1,
     totalPages: 0,
     ui: {
-      loading: true,
-      doneLoading: false,
-      loadError: ''
+      fetching: true,
+      doneFetching: false,
+      fetchError: ''
     }
   }
 
@@ -68,9 +68,9 @@ it('handles FETCH_COMPANIES_SUCCESS', () => {
     currentPage: 1,
     totalPages: 10,
     ui: {
-      loading: false,
-      doneLoading: true,
-      loadError: ''
+      fetching: false,
+      doneFetching: true,
+      fetchError: ''
     }
   })
 })
@@ -81,9 +81,9 @@ it('handles FETCH_COMPANIES_FAILURE', () => {
     currentPage: 1,
     totalPages: 0,
     ui: {
-      loading: false,
-      doneLoading: false,
-      loadError: ''
+      fetching: false,
+      doneFetching: false,
+      fetchError: ''
     }
   }
 
@@ -97,9 +97,9 @@ it('handles FETCH_COMPANIES_FAILURE', () => {
     currentPage: 1,
     totalPages: 0,
     ui: {
-      loading: false,
-      doneLoading: false,
-      loadError: 'Not Found'
+      fetching: false,
+      doneFetching: false,
+      fetchError: 'Not Found'
     }
   })
 })
@@ -110,9 +110,9 @@ it('handles UPDATE_CURRENT_PAGE', () => {
     currentPage: 1,
     totalPages: 0,
     ui: {
-      loading: false,
-      doneLoading: false,
-      loadError: ''
+      fetching: false,
+      doneFetching: false,
+      fetchError: ''
     }
   }
 
@@ -126,9 +126,9 @@ it('handles UPDATE_CURRENT_PAGE', () => {
     currentPage: 2,
     totalPages: 0,
     ui: {
-      loading: false,
-      doneLoading: false,
-      loadError: ''
+      fetching: false,
+      doneFetching: false,
+      fetchError: ''
     }
   })
 })
@@ -142,9 +142,9 @@ it('handles RESET_COMPANIES', () => {
     currentPage: 1,
     totalPages: 10,
     ui: {
-      loading: false,
-      doneLoading: true,
-      loadError: ''
+      fetching: false,
+      doneFetching: true,
+      fetchError: ''
     }
   }
 
@@ -157,9 +157,9 @@ it('handles RESET_COMPANIES', () => {
     currentPage: 1,
     totalPages: 0,
     ui: {
-      loading: false,
-      doneLoading: false,
-      loadError: ''
+      fetching: false,
+      doneFetching: false,
+      fetchError: ''
     }
   })
 })

@@ -61,9 +61,9 @@ describe('fetchCompanies', () => {
           currentPage: 1,
           totalPages: 0,
           ui: {
-            loading: false,
-            doneLoading: false,
-            loadError: ''
+            fetching: false,
+            doneFetching: false,
+            fetchError: ''
           }
         }
       })
@@ -99,9 +99,9 @@ describe('fetchCompanies', () => {
           currentPage: 1,
           totalPages: 0,
           ui: {
-            loading: false,
-            doneLoading: false,
-            loadError: 'Not Found'
+            fetching: false,
+            doneFetching: false,
+            fetchError: 'Not Found'
           }
         }
       })
@@ -128,9 +128,9 @@ describe('resetCompanies', () => {
       currentPage: 1,
       totalPages: 10,
       ui: {
-        loading: false,
-        doneLoading: true,
-        loadError: ''
+        fetching: false,
+        doneFetching: true,
+        fetchError: ''
       }
     })
 
@@ -157,9 +157,9 @@ describe('updateCurrentPage', () => {
       currentPage: 1,
       totalPages: 10,
       ui: {
-        loading: false,
-        doneLoading: true,
-        loadError: ''
+        fetching: false,
+        doneFetching: true,
+        fetchError: ''
       }
     })
 

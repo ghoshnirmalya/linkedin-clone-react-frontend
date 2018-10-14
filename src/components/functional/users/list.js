@@ -8,12 +8,12 @@ class UsersList extends Component {
   }
 
   loadMoreButtonNode = () => {
-    if (this.props.totalPages === this.props.currentPage) return false
+    if (this.props.totalPages === this.props.currentPage || this.props.usersUI.fetching) return false
 
     return (
       <Button
         onClick={() => this.handleUpdateCurrentPage()}
-        disabled={this.props.usersUI.loading}
+        disabled={this.props.usersUI.fetching}
       >
         Load more
       </Button>
@@ -32,7 +32,7 @@ class UsersList extends Component {
   render () {
     return (
       <List
-        loading={this.props.usersUI.loading}
+        loading={this.props.usersUI.fetching}
         grid={{ gutter: 16, xs: 1, sm: 1, md: 1, lg: 2, xl: 2, xxl: 3 }}
         dataSource={this.props.users}
         loadMore={this.loadMoreButtonNode()}

@@ -9,9 +9,9 @@ class CompaniesList extends Component {
   }
 
   loadMoreButtonNode = () => {
-    if (this.props.totalPages === this.props.currentPage) return false
+    if (this.props.totalPages === this.props.currentPage || this.props.companiesUI.fetching) return false
 
-    return <Button onClick={() => this.handleUpdateCurrentPage()} disabled={this.props.companiesUI.loading}>Load more</Button>
+    return <Button onClick={() => this.handleUpdateCurrentPage()} disabled={this.props.companiesUI.fetching}>Load more</Button>
   }
 
   handleUpdateCurrentPage = () => {
@@ -26,7 +26,7 @@ class CompaniesList extends Component {
   render () {
     return (
       <List
-        loading={this.props.companiesUI.loading}
+        loading={this.props.companiesUI.fetching}
         grid={{ gutter: 16, xs: 1, sm: 1, md: 1, lg: 2, xl: 2, xxl: 3 }}
         dataSource={this.props.companies}
         loadMore={this.loadMoreButtonNode()}
