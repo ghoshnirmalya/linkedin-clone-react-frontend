@@ -52,6 +52,13 @@ class PrivateLayout extends Component {
     }
   });
 
+  static LazyCompaniesEdit = Loadable({
+    loader: () => import('../../../pages/companies/edit'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
   render = () => {
     if (['/auth', '/'].indexOf(this.props.history.location.pathname) > -1) {
       return <Redirect to='/home' />
@@ -105,6 +112,11 @@ class PrivateLayout extends Component {
                 exact
                 path='/companies/:id'
                 component={PrivateLayout.LazyCompaniesShow}
+              />
+              <Route
+                exact
+                path='/companies/:id/edit'
+                component={PrivateLayout.LazyCompaniesEdit}
               />
             </Switch>
           </PrivateLayout.Container>
