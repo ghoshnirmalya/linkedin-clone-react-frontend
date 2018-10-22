@@ -5,9 +5,6 @@ import constants from '../constants/user'
 const initialState = {
   user: {},
   ui: {
-    saving: false,
-    doneSaving: false,
-    saveError: '',
     fetching: false,
     doneFetching: false,
     fetchError: ''
