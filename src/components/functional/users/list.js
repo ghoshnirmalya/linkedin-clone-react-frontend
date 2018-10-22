@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { List, Card, Button } from 'antd'
+import { Link } from 'react-router-dom'
 
 class UsersList extends Component {
   componentDidMount () {
@@ -38,9 +39,11 @@ class UsersList extends Component {
         loadMore={this.loadMoreButtonNode()}
         renderItem={item => (
           <List.Item>
-            <Card title={item.name} hoverable bordered={false}>
-              {item.email}
-            </Card>
+            <Link to={`/users/${item.id}`}>
+              <Card title={item.name} hoverable bordered={false}>
+                {item.email}
+              </Card>
+            </Link>
           </List.Item>
         )}
       />

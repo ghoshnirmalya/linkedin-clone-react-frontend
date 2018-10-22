@@ -31,6 +31,13 @@ class PrivateLayout extends Component {
     }
   });
 
+  static LazyUsersShow = Loadable({
+    loader: () => import('../../../pages/users/show'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
   static LazyCompanies = Loadable({
     loader: () => import('../../../pages/companies'),
     loading () {
@@ -98,6 +105,11 @@ class PrivateLayout extends Component {
             <Switch>
               <Route exact path='/home' component={PrivateLayout.LazyHome} />
               <Route exact path='/users' component={PrivateLayout.LazyUsers} />
+              <Route
+                exact
+                path='/users/:id'
+                component={PrivateLayout.LazyUsersShow}
+              />
               <Route
                 exact
                 path='/companies'
