@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Card, Icon, List, Row, Col } from 'antd'
-import { Link } from 'react-router-dom'
 
 class ShowUserForm extends Component {
   componentDidMount () {
@@ -51,10 +50,7 @@ class ShowUserForm extends Component {
             </Fragment>,
             <Fragment>
               <Icon type='mail' theme='outlined' /> {this.props.user.email}
-            </Fragment>,
-            <Link to={`/users/${this.props.id}/edit`}>
-              <Icon type='edit' theme='outlined' />
-            </Link>
+            </Fragment>
           ]}
         >
           <Card.Meta title={this.props.user.name} />
