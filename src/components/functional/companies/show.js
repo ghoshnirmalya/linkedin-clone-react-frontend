@@ -27,7 +27,6 @@ class ShowCompanyForm extends Component {
               <Card
                 type='inner'
                 title={company.title}
-                extra={<a href='#'>Apply</a>}
               >
                 {company.description}
               </Card>
