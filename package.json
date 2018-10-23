@@ -11,7 +11,7 @@
     "standard": "^12.0.1"
   },
   "dependencies": {
-    "antd": "^3.8.4",
+    "antd": "^3.10.2",
     "immer": "^1.5.0",
     "kitsu": "^6.4.0",
     "prop-types": "^15.6.2",
