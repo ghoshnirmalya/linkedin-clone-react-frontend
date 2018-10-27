@@ -10,7 +10,8 @@ const initialState = {
     fetching: false,
     doneFetching: false,
     fetchError: ''
-  }
+  },
+  search: ''
 }
 
 export default produce((draft, action) => {
@@ -21,9 +22,7 @@ export default produce((draft, action) => {
       break
 
     case constants.FETCH_COMPANIES_SUCCESS:
-      action.companies.forEach(company => {
-        draft.companies[company.id] = company
-      })
+      draft.companies = action.companies
       draft.totalPages = action.totalPages
       draft.ui.fetching = false
       draft.ui.doneFetching = true
@@ -45,6 +44,11 @@ export default produce((draft, action) => {
 
     case constants.RESET_COMPANIES:
       return initialState
+
+    case constants.UPDATE_COMPANIES_SEARCH:
+      draft.search = action.search
+
+      break
 
     default:
       break

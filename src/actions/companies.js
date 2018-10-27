@@ -9,7 +9,8 @@ export const fetchCompanies = (page = 1) => async (dispatch, getState) => {
 
   try {
     const response = await api.get('companies', {
-      page: getState().companies.currentPage
+      page: getState().companies.currentPage,
+      search: getState().companies.search
     })
 
     dispatch({
@@ -38,5 +39,12 @@ export const updateCurrentPage = (page = 1) => dispatch => {
   dispatch({
     type: constants.UPDATE_CURRENT_PAGE,
     page
+  })
+}
+
+export const updateSearch = search => dispatch => {
+  dispatch({
+    type: constants.UPDATE_COMPANIES_SEARCH,
+    search
   })
 }
