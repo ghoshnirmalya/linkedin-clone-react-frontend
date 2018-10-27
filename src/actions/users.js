@@ -9,7 +9,8 @@ export const fetchUsers = (page = 1) => async (dispatch, getState) => {
 
   try {
     const response = await api.get('users', {
-      page: getState().users.currentPage
+      page: getState().users.currentPage,
+      search: getState().users.search
     })
 
     dispatch({
@@ -38,5 +39,12 @@ export const updateCurrentPage = (page = 1) => (dispatch, getState) => {
   dispatch({
     type: constants.UPDATE_CURRENT_PAGE,
     page
+  })
+}
+
+export const updateSearch = search => dispatch => {
+  dispatch({
+    type: constants.UPDATE_USERS_SEARCH,
+    search
   })
 }

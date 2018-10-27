@@ -3,14 +3,15 @@ import produce from 'immer'
 import constants from '../constants/users'
 
 const initialState = {
-  users: {},
+  users: [],
   currentPage: 1,
   totalPages: 0,
   ui: {
     fetching: false,
     doneFetching: false,
     fetchError: ''
-  }
+  },
+  search: ''
 }
 
 export default produce((draft, action) => {
@@ -21,9 +22,7 @@ export default produce((draft, action) => {
       break
 
     case constants.FETCH_USERS_SUCCESS:
-      action.users.forEach(user => {
-        draft.users[user.id] = user
-      })
+      draft.users = action.users
       draft.totalPages = action.totalPages
       draft.ui.fetching = false
       draft.ui.doneFetching = true
@@ -45,6 +44,11 @@ export default produce((draft, action) => {
 
     case constants.RESET_USERS:
       return initialState
+
+    case constants.UPDATE_USERS_SEARCH:
+      draft.search = action.search
+
+      break
 
     default:
       break

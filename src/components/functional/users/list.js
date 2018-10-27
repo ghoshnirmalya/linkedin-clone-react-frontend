@@ -9,7 +9,7 @@ class UsersList extends Component {
   }
 
   loadMoreButtonNode = () => {
-    if (this.props.totalPages === this.props.currentPage || this.props.usersUI.fetching) return false
+    if ((this.props.totalPages === this.props.currentPage) || this.props.usersUI.fetching) return false
 
     return (
       <Button

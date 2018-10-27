@@ -1,10 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import List from '../../containers/users/list'
+import SearchBox from '../../containers/users/search-box'
 
 class UsersPage extends Component {
   render () {
-    return <List />
+    return (
+      <Fragment>
+        <SearchBox />
+        <List />
+      </Fragment>
+    )
   }
 }
 
