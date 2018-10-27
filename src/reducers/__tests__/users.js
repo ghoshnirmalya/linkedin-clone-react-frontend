@@ -2,28 +2,30 @@ import reducer from '../users'
 import constants from '../../constants/users'
 
 it('returns the initial state', () => {
-  expect(reducer(undefined, {})).toEqual({
-    users: {},
+  expect(reducer(undefined, [])).toEqual({
+    users: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
       fetching: false,
       doneFetching: false,
       fetchError: ''
-    }
+    },
+    search: ''
   })
 })
 
 it('handles FETCH_USERS_REQUEST', () => {
   const prevState = {
-    users: {},
+    users: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
       fetching: false,
       doneFetching: false,
       fetchError: ''
-    }
+    },
+    'search': ''
   }
 
   const nextState = reducer(prevState, {
@@ -31,27 +33,29 @@ it('handles FETCH_USERS_REQUEST', () => {
   })
 
   expect(nextState).toEqual({
-    users: {},
+    users: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
       fetching: true,
       doneFetching: false,
       fetchError: ''
-    }
+    },
+    search: ''
   })
 })
 
 it('handles FETCH_USERS_SUCCESS', () => {
   const prevState = {
-    users: {},
+    users: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
       fetching: true,
       doneFetching: false,
       fetchError: ''
-    }
+    },
+    'search': ''
   }
 
   const nextState = reducer(prevState, {
@@ -61,23 +65,24 @@ it('handles FETCH_USERS_SUCCESS', () => {
   })
 
   expect(nextState).toEqual({
-    users: {
-      '1': { id: 1, name: 'John Doe' },
-      '2': { id: 2, name: 'Jane Doe' }
-    },
+    users: [
+      { id: 1, name: 'John Doe' },
+      { id: 2, name: 'Jane Doe' }
+    ],
     currentPage: 1,
     totalPages: 10,
     ui: {
       fetching: false,
       doneFetching: true,
       fetchError: ''
-    }
+    },
+    search: ''
   })
 })
 
 it('handles FETCH_USERS_FAILURE', () => {
   const prevState = {
-    users: {},
+    users: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -93,7 +98,7 @@ it('handles FETCH_USERS_FAILURE', () => {
   })
 
   expect(nextState).toEqual({
-    users: {},
+    users: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -106,7 +111,7 @@ it('handles FETCH_USERS_FAILURE', () => {
 
 it('handles UPDATE_CURRENT_PAGE', () => {
   const prevState = {
-    users: {},
+    users: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -122,7 +127,7 @@ it('handles UPDATE_CURRENT_PAGE', () => {
   })
 
   expect(nextState).toEqual({
-    users: {},
+    users: [],
     currentPage: 2,
     totalPages: 0,
     ui: {
@@ -135,17 +140,15 @@ it('handles UPDATE_CURRENT_PAGE', () => {
 
 it('handles RESET_USERS', () => {
   const prevState = {
-    users: {
-      '1': { id: 1, name: 'John Doe' },
-      '2': { id: 2, name: 'Jane Doe' }
-    },
+    users: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
     currentPage: 1,
     totalPages: 10,
     ui: {
       fetching: false,
       doneFetching: true,
       fetchError: ''
-    }
+    },
+    search: ''
   }
 
   const nextState = reducer(prevState, {
@@ -153,13 +156,45 @@ it('handles RESET_USERS', () => {
   })
 
   expect(nextState).toEqual({
-    users: {},
+    users: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
       fetching: false,
       doneFetching: false,
       fetchError: ''
-    }
+    },
+    search: ''
+  })
+})
+
+it('handles UPDATE_USERS_SEARCH', () => {
+  const prevState = {
+    users: [],
+    currentPage: 1,
+    totalPages: 1,
+    ui: {
+      fetching: false,
+      doneFetching: true,
+      fetchError: ''
+    },
+    search: ''
+  }
+
+  const nextState = reducer(prevState, {
+    type: constants.UPDATE_USERS_SEARCH,
+    search: 'John Doe'
+  })
+
+  expect(nextState).toEqual({
+    users: [],
+    currentPage: 1,
+    totalPages: 1,
+    ui: {
+      fetching: false,
+      doneFetching: true,
+      fetchError: ''
+    },
+    search: 'John Doe'
   })
 })

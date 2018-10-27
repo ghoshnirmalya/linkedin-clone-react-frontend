@@ -117,10 +117,7 @@ describe('resetUsers', () => {
     const expectedActions = [{ type: constants.RESET_USERS }]
 
     const store = mockStore({
-      users: {
-        '1': { id: 1, name: 'John Doe' },
-        '2': { id: 2, name: 'Jane Doe' }
-      },
+      users: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
       currentPage: 1,
       totalPages: 10,
       ui: {
@@ -146,10 +143,7 @@ describe('updateCurrentPage', () => {
     ]
 
     const store = mockStore({
-      users: {
-        '1': { id: 1, name: 'John Doe' },
-        '2': { id: 2, name: 'Jane Doe' }
-      },
+      users: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
       currentPage: 1,
       totalPages: 10,
       ui: {
@@ -160,6 +154,33 @@ describe('updateCurrentPage', () => {
     })
 
     store.dispatch(actions.updateCurrentPage())
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+})
+
+describe('updateSearch', () => {
+  it('dispatches UPDATE_USERS_SEARCH', () => {
+    const expectedActions = [
+      {
+        type: constants.UPDATE_USERS_SEARCH,
+        search: 'John Doe'
+      }
+    ]
+
+    const store = mockStore({
+      users: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
+      currentPage: 1,
+      totalPages: 10,
+      ui: {
+        fetching: false,
+        doneFetching: true,
+        fetchError: ''
+      },
+      search: ''
+    })
+
+    store.dispatch(actions.updateSearch('John Doe'))
 
     expect(store.getActions()).toEqual(expectedActions)
   })
