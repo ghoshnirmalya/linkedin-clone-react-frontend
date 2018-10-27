@@ -3,7 +3,7 @@ import produce from 'immer'
 import constants from '../constants/companies'
 
 const initialState = {
-  companies: {},
+  companies: [],
   currentPage: 1,
   totalPages: 0,
   ui: {
