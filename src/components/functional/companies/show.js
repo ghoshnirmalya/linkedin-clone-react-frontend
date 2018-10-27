@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Card, Icon, List, Row, Col } from 'antd'
+import { Card, Icon, List, Row, Col, Tooltip } from 'antd'
 import { Link } from 'react-router-dom'
 
 class ShowCompanyForm extends Component {
@@ -75,22 +75,23 @@ class ShowCompanyForm extends Component {
           loading={this.props.companyUI.fetching}
           actions={[
             <Fragment>
-              <Icon type='link' theme='outlined' /> {window.location.href}
+              <Tooltip title={`Jobs at ${this.props.company.name}`}>
+                <Icon type='exception' theme='outlined' /> {this.props.company.jobs ? this.props.company.jobs.length : 0}
+              </Tooltip>
             </Fragment>,
             <Fragment>
-              <Icon type='exception' theme='outlined' /> {this.props.company.jobs && this.props.company.jobs.length}
-            </Fragment>,
-            <Fragment>
-              <Icon type='team' theme='outlined' /> {this.props.company.users && this.props.company.users.length}
+              <Tooltip title={`Users associated with ${this.props.company.name}`}>
+                <Icon type='team' theme='outlined' /> {this.props.company.users ? this.props.company.users.length : 0}
+              </Tooltip>
             </Fragment>,
             <Link to={`/companies/${this.props.id}/edit`}>
-              <Icon type='edit' theme='outlined' />
+              <Tooltip title={`Edit ${this.props.company.name}`}>
+                <Icon type='edit' theme='outlined' />
+              </Tooltip>
             </Link>
           ]}
         >
-          <Card.Meta
-            title={this.props.company.name}
-          />
+          <Card.Meta title={this.props.company.name} />
         </Card>
         <Row gutter={24}>
           <Col span={14}>
