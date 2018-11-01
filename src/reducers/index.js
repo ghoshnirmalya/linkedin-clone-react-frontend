@@ -6,6 +6,8 @@ import users from './users'
 import user from './user'
 import companies from './companies'
 import company from './company'
+import jobs from './jobs'
+import job from './job'
 
 export default combineReducers({
   router: routerReducer,
@@ -13,5 +15,7 @@ export default combineReducers({
   users,
   user,
   companies,
-  company
+  company,
+  jobs,
+  job
 })

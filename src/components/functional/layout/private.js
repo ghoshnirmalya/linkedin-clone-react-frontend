@@ -66,6 +66,27 @@ class PrivateLayout extends Component {
     }
   });
 
+  static LazyJobs = Loadable({
+    loader: () => import('../../../pages/jobs'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
+  static LazyJobsNew = Loadable({
+    loader: () => import('../../../pages/jobs/new'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
+  static LazyJobsEdit = Loadable({
+    loader: () => import('../../../pages/jobs/edit'),
+    loading () {
+      return <div>Loading...</div>
+    }
+  });
+
   render = () => {
     if (['/auth', '/'].indexOf(this.props.history.location.pathname) > -1) {
       return <Redirect to='/home' />
@@ -96,6 +117,12 @@ class PrivateLayout extends Component {
               <NavLink to='/companies'>
                 <Icon type='bank' theme='filled' />
                 <span>Companies</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key='jobs'>
+              <NavLink to='/jobs'>
+                <Icon type='bank' theme='filled' />
+                <span>Jobs</span>
               </NavLink>
             </Menu.Item>
           </Menu>
@@ -129,6 +156,21 @@ class PrivateLayout extends Component {
                 exact
                 path='/companies/:id/edit'
                 component={PrivateLayout.LazyCompaniesEdit}
+              />
+              <Route
+                exact
+                path='/jobs'
+                component={PrivateLayout.LazyJobs}
+              />
+              <Route
+                exact
+                path='/jobs/new'
+                component={PrivateLayout.LazyJobsNew}
+              />
+              <Route
+                exact
+                path='/jobs/:id/edit'
+                component={PrivateLayout.LazyJobsEdit}
               />
             </Switch>
           </PrivateLayout.Container>
