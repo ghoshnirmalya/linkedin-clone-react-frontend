@@ -13,9 +13,18 @@ export const saveJob = () => async (dispatch, getState) => {
     let response
 
     if (job.id) {
-      response = await api.update('jobs', { id: job.id, name: job.name })
+      response = await api.update('jobs', {
+        id: job.id,
+        title: job.title,
+        description: job.description,
+        company_id: job.company_id
+      })
     } else {
-      response = await api.create('jobs', { name: job.name })
+      response = await api.create('jobs', {
+        title: job.title,
+        description: job.description,
+        company_id: job.company_id
+      })
     }
 
     dispatch({

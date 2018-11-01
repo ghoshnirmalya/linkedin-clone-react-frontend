@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Card, Icon, List, Row, Col, Tooltip } from 'antd'
+import { Card, Icon, List, Row, Col, Tooltip, Button } from 'antd'
 import { Link } from 'react-router-dom'
 
 class ShowCompanyForm extends Component {
@@ -17,6 +17,13 @@ class ShowCompanyForm extends Component {
       <Card
         loading={this.props.companyUI.fetching}
         title='Jobs'
+        extra={
+          <Link to={`/companies/${this.props.id}/jobs/new`}>
+            <Button type='primary'>
+              Add a new job
+            </Button>
+          </Link>
+        }
         style={{ marginTop: '24px' }}
       >
         <List

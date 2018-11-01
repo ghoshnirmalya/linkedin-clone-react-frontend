@@ -109,7 +109,7 @@ class PrivateLayout extends Component {
             </Menu.Item>
             <Menu.Item key='users'>
               <NavLink to='/users'>
-                <Icon type='smile' theme='filled' />
+                <Icon type='team' theme='outlined' />
                 <span>Users</span>
               </NavLink>
             </Menu.Item>
@@ -121,7 +121,7 @@ class PrivateLayout extends Component {
             </Menu.Item>
             <Menu.Item key='jobs'>
               <NavLink to='/jobs'>
-                <Icon type='bank' theme='filled' />
+                <Icon type='dollar' theme='outlined' />
                 <span>Jobs</span>
               </NavLink>
             </Menu.Item>
@@ -164,12 +164,12 @@ class PrivateLayout extends Component {
               />
               <Route
                 exact
-                path='/jobs/new'
+                path='/companies/:id/jobs/new'
                 component={PrivateLayout.LazyJobsNew}
               />
               <Route
                 exact
-                path='/jobs/:id/edit'
+                path='/companies/:id/jobs/:id/edit'
                 component={PrivateLayout.LazyJobsEdit}
               />
             </Switch>

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import { Form, Icon, Input, Button } from 'antd'
 
 class AddNewJobForm extends Component {
+  componentDidMount () {
+    this.props.updateJob('company_id', this.props.id)
+  }
+
   handleChange = e => {
     this.props.updateJob(e.target.name, e.target.value)
   };
@@ -11,7 +15,6 @@ class AddNewJobForm extends Component {
     e.preventDefault()
 
     await this.props.saveJob()
-
     this.props.history.push('/jobs')
   };
 
@@ -22,13 +25,22 @@ class AddNewJobForm extends Component {
   render () {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Form.Item label='Name'>
+        <Form.Item label='Title'>
           <Input
             prefix={<Icon type='bank' style={{ color: 'rgba(0,0,0,.25)' }} />}
-            placeholder='Name'
+            placeholder='Title'
             size='large'
             onChange={this.handleChange}
-            name='name'
+            name='title'
+          />
+        </Form.Item>
+        <Form.Item label='Description'>
+          <Input
+            prefix={<Icon type='bank' style={{ color: 'rgba(0,0,0,.25)' }} />}
+            placeholder='Description'
+            size='large'
+            onChange={this.handleChange}
+            name='description'
           />
         </Form.Item>
         <Form.Item>

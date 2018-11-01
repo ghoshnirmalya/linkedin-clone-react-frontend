@@ -5,7 +5,7 @@ import New from '../../containers/jobs/new'
 
 class AddNewJobPage extends Component {
   render () {
-    return <New history={this.props.history} />
+    return <New history={this.props.history} id={this.props.match.params.id} />
   }
 }
 
