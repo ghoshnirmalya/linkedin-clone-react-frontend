@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from 'antd'
 
 import List from '../../containers/companies/list'
+import Pagination from '../../containers/companies/pagination'
 import SearchBox from '../../containers/companies/search-box'
 
 class CompaniesPage extends Component {
@@ -18,6 +19,7 @@ class CompaniesPage extends Component {
         </div>
         <SearchBox />
         <List />
+        <Pagination />
       </Fragment>
     )
   }
