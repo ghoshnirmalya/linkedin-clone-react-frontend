@@ -11,6 +11,7 @@ class SearchBox extends Component {
         size='large'
         onSearch={async search => {
           this.props.updateSearch(search)
+          this.props.updateCurrentPage()
           await this.props.fetchUsers()
         }}
         style={{ marginBottom: '24px' }}
@@ -21,7 +22,8 @@ class SearchBox extends Component {
 
 SearchBox.propTypes = {
   fetchUsers: PropTypes.func.isRequired,
-  updateSearch: PropTypes.func.isRequired
+  updateSearch: PropTypes.func.isRequired,
+  updateCurrentPage: PropTypes.func.isRequired
 }
 
 export default SearchBox
