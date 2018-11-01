@@ -1,16 +1,16 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
-import * as actions from '../companies'
-import constants from '../../constants/companies'
+import * as actions from '../jobs'
+import constants from '../../constants/jobs'
 import api from '../../lib/kitsu'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
-describe('fetchCompanies', () => {
+describe('fetchJobs', () => {
   describe('on success', () => {
-    it('dispatches FETCH_COMPANIES_REQUEST & FETCH_COMPANIES_SUCCESS', async () => {
+    it('dispatches FETCH_JOBS_REQUEST & FETCH_JOBS_SUCCESS', async () => {
       const fetchSpy = jest
         .spyOn(api, 'get')
         .mockReturnValue({
@@ -18,37 +18,37 @@ describe('fetchCompanies', () => {
             {
               id: 1,
               attributes: {
-                name: 'Company A'
+                name: 'Job A'
               }
             },
             {
               id: 2,
               attributes: {
-                name: 'Company B'
+                name: 'Job B'
               }
             }
           ],
           links: {
-            last: 'http://localhost:3000/v1/companies?page%5Bnumber%5D=10&page%5Bsize%5D=10'
+            last: 'http://localhost:3000/v1/jobs?page%5Bnumber%5D=10&page%5Bsize%5D=10'
           }
         })
       const expectedActions = [
         {
-          type: constants.FETCH_COMPANIES_REQUEST
+          type: constants.FETCH_JOBS_REQUEST
         },
         {
-          type: constants.FETCH_COMPANIES_SUCCESS,
-          companies: [
+          type: constants.FETCH_JOBS_SUCCESS,
+          jobs: [
             {
               id: 1,
               attributes: {
-                name: 'Company A'
+                name: 'Job A'
               }
             },
             {
               id: 2,
               attributes: {
-                name: 'Company B'
+                name: 'Job B'
               }
             }
           ],
@@ -56,8 +56,8 @@ describe('fetchCompanies', () => {
         }
       ]
       const store = mockStore({
-        companies: {
-          companies: {},
+        jobs: {
+          jobs: {},
           currentPage: 1,
           totalPages: 0,
           ui: {
@@ -68,34 +68,34 @@ describe('fetchCompanies', () => {
         }
       })
 
-      await store.dispatch(actions.fetchCompanies())
+      await store.dispatch(actions.fetchJobs())
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('companies', { page: 1 })
+      expect(fetchSpy).toHaveBeenCalledWith('jobs', { page: 1 })
 
       fetchSpy.mockRestore()
     })
   })
 
   describe('on failure', () => {
-    it('dispatches FETCH_COMPANIES_REQUEST & FETCH_COMPANIES_FAILURE', async () => {
+    it('dispatches FETCH_JOBS_REQUEST & FETCH_JOBS_FAILURE', async () => {
       const fetchSpy = jest
         .spyOn(api, 'get')
         .mockImplementation(() => Promise.reject(new Error('Not Found')))
 
       const expectedActions = [
         {
-          type: constants.FETCH_COMPANIES_REQUEST
+          type: constants.FETCH_JOBS_REQUEST
         },
         {
-          type: constants.FETCH_COMPANIES_FAILURE,
+          type: constants.FETCH_JOBS_FAILURE,
           errorMessage: new Error('Not Found')
         }
       ]
 
       const store = mockStore({
-        companies: {
-          companies: {},
+        jobs: {
+          jobs: {},
           currentPage: 1,
           totalPages: 0,
           ui: {
@@ -106,22 +106,22 @@ describe('fetchCompanies', () => {
         }
       })
 
-      await store.dispatch(actions.fetchCompanies())
+      await store.dispatch(actions.fetchJobs())
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('companies', { page: 1 })
+      expect(fetchSpy).toHaveBeenCalledWith('jobs', { page: 1 })
 
       fetchSpy.mockRestore()
     })
   })
 })
 
-describe('resetCompanies', () => {
-  it('dispatches RESET_COMPANIES', () => {
-    const expectedActions = [{ type: constants.RESET_COMPANIES }]
+describe('resetJobs', () => {
+  it('dispatches RESET_JOBS', () => {
+    const expectedActions = [{ type: constants.RESET_JOBS }]
 
     const store = mockStore({
-      companies: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
+      jobs: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
       currentPage: 1,
       totalPages: 10,
       ui: {
@@ -131,7 +131,7 @@ describe('resetCompanies', () => {
       }
     })
 
-    store.dispatch(actions.resetCompanies())
+    store.dispatch(actions.resetJobs())
 
     expect(store.getActions()).toEqual(expectedActions)
   })
@@ -147,7 +147,7 @@ describe('updateCurrentPage', () => {
     ]
 
     const store = mockStore({
-      companies: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
+      jobs: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
       currentPage: 1,
       totalPages: 10,
       ui: {
@@ -164,16 +164,16 @@ describe('updateCurrentPage', () => {
 })
 
 describe('updateSearch', () => {
-  it('dispatches UPDATE_COMPANIES_SEARCH', () => {
+  it('dispatches UPDATE_JOBS_SEARCH', () => {
     const expectedActions = [
       {
-        type: constants.UPDATE_COMPANIES_SEARCH,
+        type: constants.UPDATE_JOBS_SEARCH,
         search: 'John Doe'
       }
     ]
 
     const store = mockStore({
-      companies: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
+      jobs: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
       currentPage: 1,
       totalPages: 10,
       ui: {

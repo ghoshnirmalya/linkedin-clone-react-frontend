@@ -1,40 +1,48 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
-import * as actions from '../company'
-import constants from '../../constants/company'
+import * as actions from '../job'
+import constants from '../../constants/job'
 import api from '../../lib/kitsu'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
-describe('saveCompany', () => {
+describe('saveJob', () => {
   it('does a POST request if id is not present in state', async () => {
     const fetchSpy = jest
       .spyOn(api, 'create')
       .mockReturnValue({
         data: {
-          name: 'Company A'
+          title: 'Job A',
+          description: 'Some description',
+          company_id: 1
         }
       })
     const expectedActions = [
       {
-        type: constants.SAVE_COMPANY_REQUEST,
-        company: {
-          name: 'Company A'
+        type: constants.SAVE_JOB_REQUEST,
+        job: {
+          title: 'Job A',
+          description: 'Some description',
+          company_id: 1
         }
       },
       {
-        type: constants.SAVE_COMPANY_SUCCESS,
-        company: {
-          name: 'Company A'
+        type: constants.SAVE_JOB_SUCCESS,
+        job: {
+          title: 'Job A',
+          description: 'Some description',
+          company_id: 1
         }
       }
     ]
     const store = mockStore({
-      company: {
-        company: {
-          name: 'Company A'
+      job: {
+        job: {
+          title: 'Job A',
+          description: 'Some description',
+          company_id: 1
         },
         ui: {
           saving: false,
@@ -44,10 +52,18 @@ describe('saveCompany', () => {
       }
     })
 
-    await store.dispatch(actions.saveCompany({ name: 'Company A' }))
+    await store.dispatch(actions.saveJob({
+      title: 'Job A',
+      description: 'Some description',
+      company_id: 1
+    }))
 
     expect(store.getActions()).toEqual(expectedActions)
-    expect(fetchSpy).toHaveBeenCalledWith('companies', { 'name': 'Company A' })
+    expect(fetchSpy).toHaveBeenCalledWith('jobs', {
+      title: 'Job A',
+      description: 'Some description',
+      company_id: 1
+    })
 
     fetchSpy.mockRestore()
   })
@@ -58,30 +74,38 @@ describe('saveCompany', () => {
       .mockReturnValue({
         data: {
           id: 1,
-          name: 'Company A'
+          title: 'Job A',
+          description: 'Some description',
+          company_id: 1
         }
       })
     const expectedActions = [
       {
-        type: constants.SAVE_COMPANY_REQUEST,
-        company: {
+        type: constants.SAVE_JOB_REQUEST,
+        job: {
           id: 1,
-          name: 'Company A'
+          title: 'Job A',
+          description: 'Some description',
+          company_id: 1
         }
       },
       {
-        type: constants.SAVE_COMPANY_SUCCESS,
-        company: {
+        type: constants.SAVE_JOB_SUCCESS,
+        job: {
           id: 1,
-          name: 'Company A'
+          title: 'Job A',
+          description: 'Some description',
+          company_id: 1
         }
       }
     ]
     const store = mockStore({
-      company: {
-        company: {
+      job: {
+        job: {
           id: 1,
-          name: 'Company A'
+          title: 'Job A',
+          description: 'Some description',
+          company_id: 1
         },
         ui: {
           saving: false,
@@ -91,41 +115,58 @@ describe('saveCompany', () => {
       }
     })
 
-    await store.dispatch(actions.saveCompany({ name: 'Company A' }))
+    await store.dispatch(actions.saveJob({
+      title: 'Job A',
+      description: 'Some description',
+      company_id: 1
+    }))
 
     expect(store.getActions()).toEqual(expectedActions)
-    expect(fetchSpy).toHaveBeenCalledWith('companies', { id: 1, 'name': 'Company A' })
+    expect(fetchSpy).toHaveBeenCalledWith('jobs', {
+      id: 1,
+      title: 'Job A',
+      description: 'Some description',
+      company_id: 1
+    })
 
     fetchSpy.mockRestore()
   })
 
   describe('on success', () => {
-    it('dispatches SAVE_COMPANY_REQUEST & SAVE_COMPANY_SUCCESS', async () => {
+    it('dispatches SAVE_JOB_REQUEST & SAVE_JOB_SUCCESS', async () => {
       const fetchSpy = jest
         .spyOn(api, 'create')
         .mockReturnValue({
           data: {
-            name: 'Company A'
+            title: 'Job A',
+            description: 'Some description',
+            company_id: 1
           }
         })
       const expectedActions = [
         {
-          type: constants.SAVE_COMPANY_REQUEST,
-          company: {
-            name: 'Company A'
+          type: constants.SAVE_JOB_REQUEST,
+          job: {
+            title: 'Job A',
+            description: 'Some description',
+            company_id: 1
           }
         },
         {
-          type: constants.SAVE_COMPANY_SUCCESS,
-          company: {
-            name: 'Company A'
+          type: constants.SAVE_JOB_SUCCESS,
+          job: {
+            title: 'Job A',
+            description: 'Some description',
+            company_id: 1
           }
         }
       ]
       const store = mockStore({
-        company: {
-          company: {
-            name: 'Company A'
+        job: {
+          job: {
+            title: 'Job A',
+            description: 'Some description',
+            company_id: 1
           },
           ui: {
             saving: false,
@@ -135,38 +176,50 @@ describe('saveCompany', () => {
         }
       })
 
-      await store.dispatch(actions.saveCompany({ name: 'Company A' }))
+      await store.dispatch(actions.saveJob({
+        title: 'Job A',
+        description: 'Some description',
+        company_id: 1
+      }))
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('companies', { 'name': 'Company A' })
+      expect(fetchSpy).toHaveBeenCalledWith('jobs', {
+        title: 'Job A',
+        description: 'Some description',
+        company_id: 1
+      })
 
       fetchSpy.mockRestore()
     })
   })
 
   describe('on failure', () => {
-    it('dispatches SAVE_COMPANY_REQUEST & SAVE_COMPANY_FAILURE', async () => {
+    it('dispatches SAVE_JOB_REQUEST & SAVE_JOB_FAILURE', async () => {
       const fetchSpy = jest
         .spyOn(api, 'create')
         .mockImplementation(() => Promise.reject(new Error('Not Found')))
 
       const expectedActions = [
         {
-          type: constants.SAVE_COMPANY_REQUEST,
-          company: {
-            name: 'Company A'
+          type: constants.SAVE_JOB_REQUEST,
+          job: {
+            title: 'Job A',
+            description: 'Some description',
+            company_id: 1
           }
         },
         {
-          type: constants.SAVE_COMPANY_FAILURE,
+          type: constants.SAVE_JOB_FAILURE,
           errorMessage: new Error('Not Found')
         }
       ]
 
       const store = mockStore({
-        company: {
-          company: {
-            name: 'Company A'
+        job: {
+          job: {
+            title: 'Job A',
+            description: 'Some description',
+            company_id: 1
           },
           ui: {
             saving: false,
@@ -176,11 +229,17 @@ describe('saveCompany', () => {
         }
       })
 
-      await store.dispatch(actions.saveCompany({ name: 'Company A' }))
+      await store.dispatch(actions.saveJob({
+        title: 'Job A',
+        description: 'Some description',
+        company_id: 1
+      }))
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('companies', {
-        name: 'Company A'
+      expect(fetchSpy).toHaveBeenCalledWith('jobs', {
+        title: 'Job A',
+        description: 'Some description',
+        company_id: 1
       })
 
       fetchSpy.mockRestore()
@@ -188,32 +247,32 @@ describe('saveCompany', () => {
   })
 })
 
-describe('fetchCompany', () => {
+describe('fetchJob', () => {
   describe('on success', () => {
-    it('dispatches FETCH_COMPANY_REQUEST & FETCH_COMPANY_SUCCESS', async () => {
+    it('dispatches FETCH_JOB_REQUEST & FETCH_JOB_SUCCESS', async () => {
       const fetchSpy = jest
         .spyOn(api, 'fetch')
         .mockReturnValue({
           data: {
-            name: 'Company A'
+            title: 'Job A'
           }
         })
       const expectedActions = [
         {
-          type: constants.FETCH_COMPANY_REQUEST,
+          type: constants.FETCH_JOB_REQUEST,
           id: 1
         },
         {
-          type: constants.FETCH_COMPANY_SUCCESS,
-          company: {
-            name: 'Company A'
+          type: constants.FETCH_JOB_SUCCESS,
+          job: {
+            title: 'Job A'
           }
         }
       ]
       const store = mockStore({
-        company: {
-          company: {
-            name: 'Company A'
+        job: {
+          job: {
+            title: 'Job A'
           },
           ui: {
             saving: false,
@@ -223,35 +282,35 @@ describe('fetchCompany', () => {
         }
       })
 
-      await store.dispatch(actions.fetchCompany(1))
+      await store.dispatch(actions.fetchJob(1))
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('companies/1')
+      expect(fetchSpy).toHaveBeenCalledWith('jobs/1')
 
       fetchSpy.mockRestore()
     })
   })
 
   describe('on failure', () => {
-    it('dispatches FETCH_COMPANY_REQUEST & FETCH_COMPANY_FAILURE', async () => {
+    it('dispatches FETCH_JOB_REQUEST & FETCH_JOB_FAILURE', async () => {
       const fetchSpy = jest
         .spyOn(api, 'fetch')
         .mockImplementation(() => Promise.reject(new Error('Not Found')))
 
       const expectedActions = [
         {
-          type: constants.FETCH_COMPANY_REQUEST,
+          type: constants.FETCH_JOB_REQUEST,
           id: 1
         },
         {
-          type: constants.FETCH_COMPANY_FAILURE,
+          type: constants.FETCH_JOB_FAILURE,
           errorMessage: new Error('Not Found')
         }
       ]
 
       const store = mockStore({
-        company: {
-          company: {},
+        job: {
+          job: {},
           ui: {
             saving: false,
             doneSaving: false,
@@ -260,23 +319,23 @@ describe('fetchCompany', () => {
         }
       })
 
-      await store.dispatch(actions.fetchCompany(1))
+      await store.dispatch(actions.fetchJob(1))
 
       expect(store.getActions()).toEqual(expectedActions)
-      expect(fetchSpy).toHaveBeenCalledWith('companies/1')
+      expect(fetchSpy).toHaveBeenCalledWith('jobs/1')
 
       fetchSpy.mockRestore()
     })
   })
 })
 
-describe('resetCompany', () => {
-  it('dispatches RESET_COMPANY', () => {
-    const expectedActions = [{ type: constants.RESET_COMPANY }]
+describe('resetJob', () => {
+  it('dispatches RESET_JOB', () => {
+    const expectedActions = [{ type: constants.RESET_JOB }]
 
     const store = mockStore({
-      company: {
-        name: 'Company A'
+      job: {
+        title: 'Job A'
       },
       ui: {
         saving: false,
@@ -285,19 +344,19 @@ describe('resetCompany', () => {
       }
     })
 
-    store.dispatch(actions.resetCompany())
+    store.dispatch(actions.resetJob())
 
     expect(store.getActions()).toEqual(expectedActions)
   })
 })
 
-describe('updateCompany', () => {
-  it('dispatches UPDATE_COMPANY', () => {
-    const expectedActions = [{ type: constants.UPDATE_COMPANY, key: 'name', value: 'Company A' }]
+describe('updateJob', () => {
+  it('dispatches UPDATE_JOB', () => {
+    const expectedActions = [{ type: constants.UPDATE_JOB, key: 'title', value: 'Job A' }]
 
     const store = mockStore({
-      company: {
-        name: 'Company A'
+      job: {
+        title: 'Job A'
       },
       ui: {
         saving: false,
@@ -306,7 +365,7 @@ describe('updateCompany', () => {
       }
     })
 
-    store.dispatch(actions.updateCompany('name', 'Company A'))
+    store.dispatch(actions.updateJob('title', 'Job A'))
 
     expect(store.getActions()).toEqual(expectedActions)
   })

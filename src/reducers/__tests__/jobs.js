@@ -1,9 +1,9 @@
-import reducer from '../companies'
-import constants from '../../constants/companies'
+import reducer from '../jobs'
+import constants from '../../constants/jobs'
 
 it('returns the initial state', () => {
   expect(reducer(undefined, {})).toEqual({
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -15,9 +15,9 @@ it('returns the initial state', () => {
   })
 })
 
-it('handles FETCH_COMPANIES_REQUEST', () => {
+it('handles FETCH_JOBS_REQUEST', () => {
   const prevState = {
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -28,11 +28,11 @@ it('handles FETCH_COMPANIES_REQUEST', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.FETCH_COMPANIES_REQUEST
+    type: constants.FETCH_JOBS_REQUEST
   })
 
   expect(nextState).toEqual({
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -43,9 +43,9 @@ it('handles FETCH_COMPANIES_REQUEST', () => {
   })
 })
 
-it('handles FETCH_COMPANIES_SUCCESS', () => {
+it('handles FETCH_JOBS_SUCCESS', () => {
   const prevState = {
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -56,13 +56,13 @@ it('handles FETCH_COMPANIES_SUCCESS', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.FETCH_COMPANIES_SUCCESS,
-    companies: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
+    type: constants.FETCH_JOBS_SUCCESS,
+    jobs: [{ id: 1, title: 'John Doe' }, { id: 2, title: 'Jane Doe' }],
     'totalPages': 10
   })
 
   expect(nextState).toEqual({
-    companies: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
+    jobs: [{ id: 1, title: 'John Doe' }, { id: 2, title: 'Jane Doe' }],
     currentPage: 1,
     totalPages: 10,
     ui: {
@@ -73,9 +73,9 @@ it('handles FETCH_COMPANIES_SUCCESS', () => {
   })
 })
 
-it('handles FETCH_COMPANIES_FAILURE', () => {
+it('handles FETCH_JOBS_FAILURE', () => {
   const prevState = {
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -86,12 +86,12 @@ it('handles FETCH_COMPANIES_FAILURE', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.FETCH_COMPANIES_FAILURE,
+    type: constants.FETCH_JOBS_FAILURE,
     errorMessage: 'Not Found'
   })
 
   expect(nextState).toEqual({
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -104,7 +104,7 @@ it('handles FETCH_COMPANIES_FAILURE', () => {
 
 it('handles UPDATE_CURRENT_PAGE', () => {
   const prevState = {
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -120,7 +120,7 @@ it('handles UPDATE_CURRENT_PAGE', () => {
   })
 
   expect(nextState).toEqual({
-    companies: [],
+    jobs: [],
     currentPage: 2,
     totalPages: 0,
     ui: {
@@ -131,9 +131,9 @@ it('handles UPDATE_CURRENT_PAGE', () => {
   })
 })
 
-it('handles RESET_COMPANIES', () => {
+it('handles RESET_JOBS', () => {
   const prevState = {
-    companies: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }],
+    jobs: [{ id: 1, title: 'John Doe' }, { id: 2, title: 'Jane Doe' }],
     currentPage: 1,
     totalPages: 10,
     ui: {
@@ -145,11 +145,11 @@ it('handles RESET_COMPANIES', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.RESET_COMPANIES
+    type: constants.RESET_JOBS
   })
 
   expect(nextState).toEqual({
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 0,
     ui: {
@@ -161,9 +161,9 @@ it('handles RESET_COMPANIES', () => {
   })
 })
 
-it('handles UPDATE_COMPANIES_SEARCH', () => {
+it('handles UPDATE_JOBS_SEARCH', () => {
   const prevState = {
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 1,
     ui: {
@@ -175,12 +175,12 @@ it('handles UPDATE_COMPANIES_SEARCH', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.UPDATE_COMPANIES_SEARCH,
+    type: constants.UPDATE_JOBS_SEARCH,
     search: 'John Doe'
   })
 
   expect(nextState).toEqual({
-    companies: [],
+    jobs: [],
     currentPage: 1,
     totalPages: 1,
     ui: {

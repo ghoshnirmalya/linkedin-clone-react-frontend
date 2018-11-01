@@ -1,9 +1,9 @@
-import reducer from '../company'
-import constants from '../../constants/company'
+import reducer from '../job'
+import constants from '../../constants/job'
 
 it('returns the initial state', () => {
   expect(reducer(undefined, {})).toEqual({
-    company: {},
+    job: {},
     ui: {
       saving: false,
       doneSaving: false,
@@ -15,9 +15,9 @@ it('returns the initial state', () => {
   })
 })
 
-it('handles SAVE_COMPANY_REQUEST', () => {
+it('handles SAVE_JOB_REQUEST', () => {
   const prevState = {
-    company: {},
+    job: {},
     ui: {
       saving: false,
       doneSaving: false,
@@ -26,11 +26,11 @@ it('handles SAVE_COMPANY_REQUEST', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.SAVE_COMPANY_REQUEST
+    type: constants.SAVE_JOB_REQUEST
   })
 
   expect(nextState).toEqual({
-    company: {},
+    job: {},
     ui: {
       saving: true,
       doneSaving: false,
@@ -39,9 +39,9 @@ it('handles SAVE_COMPANY_REQUEST', () => {
   })
 })
 
-it('handles SAVE_COMPANY_SUCCESS', () => {
+it('handles SAVE_JOB_SUCCESS', () => {
   const prevState = {
-    company: {},
+    job: {},
     ui: {
       saving: false,
       doneSaving: false,
@@ -50,12 +50,12 @@ it('handles SAVE_COMPANY_SUCCESS', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.SAVE_COMPANY_SUCCESS,
-    company: { id: 1, name: 'Company A' }
+    type: constants.SAVE_JOB_SUCCESS,
+    job: { id: 1, name: 'Job A' }
   })
 
   expect(nextState).toEqual({
-    'company': { 'id': 1, 'name': 'Company A' },
+    'job': { 'id': 1, 'name': 'Job A' },
     ui: {
       saving: false,
       doneSaving: true,
@@ -64,9 +64,9 @@ it('handles SAVE_COMPANY_SUCCESS', () => {
   })
 })
 
-it('handles SAVE_COMPANY_FAILURE', () => {
+it('handles SAVE_JOB_FAILURE', () => {
   const prevState = {
-    company: {},
+    job: {},
     ui: {
       saving: false,
       doneSaving: false,
@@ -75,12 +75,12 @@ it('handles SAVE_COMPANY_FAILURE', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.SAVE_COMPANY_FAILURE,
+    type: constants.SAVE_JOB_FAILURE,
     errorMessage: 'Not Found'
   })
 
   expect(nextState).toEqual({
-    company: {},
+    job: {},
     ui: {
       saving: false,
       doneSaving: false,
@@ -89,9 +89,9 @@ it('handles SAVE_COMPANY_FAILURE', () => {
   })
 })
 
-it('handles FETCH_COMPANY_REQUEST', () => {
+it('handles FETCH_JOB_REQUEST', () => {
   const prevState = {
-    company: {},
+    job: {},
     ui: {
       fetching: false,
       doneFetching: false,
@@ -100,11 +100,11 @@ it('handles FETCH_COMPANY_REQUEST', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.FETCH_COMPANY_REQUEST
+    type: constants.FETCH_JOB_REQUEST
   })
 
   expect(nextState).toEqual({
-    company: {},
+    job: {},
     ui: {
       fetching: true,
       doneFetching: false,
@@ -113,9 +113,9 @@ it('handles FETCH_COMPANY_REQUEST', () => {
   })
 })
 
-it('handles FETCH_COMPANY_SUCCESS', () => {
+it('handles FETCH_JOB_SUCCESS', () => {
   const prevState = {
-    company: {},
+    job: {},
     ui: {
       fetching: false,
       doneFetching: false,
@@ -124,12 +124,12 @@ it('handles FETCH_COMPANY_SUCCESS', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.FETCH_COMPANY_SUCCESS,
-    company: { id: 1, name: 'Company A' }
+    type: constants.FETCH_JOB_SUCCESS,
+    job: { id: 1, name: 'Job A' }
   })
 
   expect(nextState).toEqual({
-    'company': { 'id': 1, 'name': 'Company A' },
+    'job': { 'id': 1, 'name': 'Job A' },
     ui: {
       fetching: false,
       doneFetching: true,
@@ -138,9 +138,9 @@ it('handles FETCH_COMPANY_SUCCESS', () => {
   })
 })
 
-it('handles FETCH_COMPANY_FAILURE', () => {
+it('handles FETCH_JOB_FAILURE', () => {
   const prevState = {
-    company: {},
+    job: {},
     ui: {
       fetching: false,
       doneFetching: false,
@@ -149,12 +149,12 @@ it('handles FETCH_COMPANY_FAILURE', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.FETCH_COMPANY_FAILURE,
+    type: constants.FETCH_JOB_FAILURE,
     errorMessage: 'Not Found'
   })
 
   expect(nextState).toEqual({
-    company: {},
+    job: {},
     ui: {
       fetching: false,
       doneFetching: false,
@@ -163,9 +163,9 @@ it('handles FETCH_COMPANY_FAILURE', () => {
   })
 })
 
-it('handles RESET_COMPANY', () => {
+it('handles RESET_JOB', () => {
   const prevState = {
-    company: {
+    job: {
       id: 1, name: 'John Doe'
     },
     ui: {
@@ -176,11 +176,11 @@ it('handles RESET_COMPANY', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.RESET_COMPANY
+    type: constants.RESET_JOB
   })
 
   expect(nextState).toEqual({
-    company: {},
+    job: {},
     ui: {
       saving: false,
       doneSaving: false,
@@ -192,10 +192,10 @@ it('handles RESET_COMPANY', () => {
   })
 })
 
-it('handles UPDATE_COMPANY', () => {
+it('handles UPDATE_JOB', () => {
   const prevState = {
-    company: {
-      id: 1, name: 'Company A'
+    job: {
+      id: 1, name: 'Job A'
     },
     ui: {
       saving: false,
@@ -208,15 +208,15 @@ it('handles UPDATE_COMPANY', () => {
   }
 
   const nextState = reducer(prevState, {
-    type: constants.UPDATE_COMPANY,
+    type: constants.UPDATE_JOB,
     key: 'name',
-    value: 'Company B'
+    value: 'Job B'
   })
 
   expect(nextState).toEqual({
-    company: {
+    job: {
       id: 1,
-      name: 'Company B'
+      name: 'Job B'
     },
     ui: {
       saving: false,
