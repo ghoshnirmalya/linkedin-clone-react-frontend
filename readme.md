@@ -4,7 +4,9 @@
 
 A clone of LinkedIn software with basic functionalities.
 
-<img src="https://user-images.githubusercontent.com/6391763/46587616-a4a0fe00-caac-11e8-82a4-8a7700d9f9f9.png" alt="Logo">
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/6391763/47952048-5689f800-df8f-11e8-9491-472b3cb9ce00.png" alt="Logo">
+</p>
 
 ## Demo
 Please check out the Netlify demo at https://linkedin-react.netlify.com/.
@@ -89,8 +91,8 @@ yarn build
 
 - [React](https://facebook.github.io/react/) - A JavaScript library for building user interfaces
 - [Redux](https://redux.js.org/) - Redux is a predictable state container for JavaScript apps
-- [React Router](https://reacttraining.com/react-router/) - React Router is a collection of navigational components that compose declaratively with your application.
-- [Create React App](https://github.com/facebookincubator/create-react-app/) - Create React apps with no build configuration.
+- [React Router](https://reacttraining.com/react-router/) - React Router is a collection of navigational components that compose declaratively with your application
+- [Create React App](https://github.com/facebookincubator/create-react-app/) - Create React apps with no build configuration
 - [Docker](https://www.docker.com/) - Used to containerize the app
 - [Screely](https://www.screely.com/) - Instantly turn your screenshot into a beautiful design mockup
 
@@ -100,4 +102,4 @@ If you find any bugs, please feel free to create an issue for that.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
