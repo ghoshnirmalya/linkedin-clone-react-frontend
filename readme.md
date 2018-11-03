@@ -6,6 +6,9 @@ A clone of LinkedIn software with basic functionalities.
 
 <img src="https://user-images.githubusercontent.com/6391763/46587616-a4a0fe00-caac-11e8-82a4-8a7700d9f9f9.png" alt="Logo">
 
+## Demo
+Please check out the Netlify demo at https://linkedin-react.netlify.com/.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -67,6 +70,20 @@ You can create a production build of you app using the following command:
 ```
 yarn build
 ```
+
+## Screenshots
+
+### Companies Listing page
+<img src="https://user-images.githubusercontent.com/6391763/47951856-b7640100-df8c-11e8-8623-6c3e0764cddb.png" />
+
+### Company Profile page
+<img src="https://user-images.githubusercontent.com/6391763/47951857-b7640100-df8c-11e8-8a2a-00325d05749f.png" />
+
+### Users Listing page
+<img src="https://user-images.githubusercontent.com/6391763/47951859-b7fc9780-df8c-11e8-8903-0c0efedd9949.png" />
+
+### Jobs Listing page
+<img src="https://user-images.githubusercontent.com/6391763/47951858-b7fc9780-df8c-11e8-8a39-eae3742a8989.png" />
 
 ## Built With
 
