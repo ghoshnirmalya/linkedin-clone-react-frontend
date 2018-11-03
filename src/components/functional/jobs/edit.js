@@ -26,14 +26,24 @@ class EditJobForm extends Component {
     return (
       <Spin spinning={this.props.jobUI.fetching}>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Item label='Name'>
+          <Form.Item label='Title'>
             <Input
-              value={this.props.job.name}
+              value={this.props.job.title}
               prefix={<Icon type='bank' style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder='Name'
+              placeholder='Title'
               size='large'
               onChange={this.handleChange}
-              name='name'
+              name='title'
+            />
+          </Form.Item>
+          <Form.Item label='Description'>
+            <Input.TextArea
+              value={this.props.job.description}
+              prefix={<Icon type='bank' style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder='Description'
+              size='large'
+              onChange={this.handleChange}
+              name='description'
             />
           </Form.Item>
           <Form.Item>

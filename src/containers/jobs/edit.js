@@ -11,7 +11,7 @@ import {
 
 const mapStateToProps = state => ({
   job: state.job.job,
-  companyUI: state.job.ui
+  jobUI: state.job.ui
 })
 
 const mapDispatchToProps = dispatch =>
