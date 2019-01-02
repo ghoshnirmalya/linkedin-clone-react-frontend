@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "antd": "^3.10.2",
-    "immer": "^1.5.0",
+    "immer": "^1.9.3",
     "kitsu": "^6.4.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
