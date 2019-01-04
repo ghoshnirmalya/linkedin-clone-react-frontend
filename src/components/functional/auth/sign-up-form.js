@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Icon, Input, Button } from 'antd'
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.props.signIn(values)
+        this.props.signUp(values)
       }
     })
   };
@@ -48,7 +48,7 @@ class LoginForm extends Component {
             size='large'
             disabled={this.props.authenticationUI.loading}
           >
-            Sign In
+            Sign Up
           </Button>
         </Form.Item>
       </Form>
@@ -56,11 +56,11 @@ class LoginForm extends Component {
   };
 }
 
-LoginForm.propTypes = {
+SignUpForm.propTypes = {
   authenticationUI: PropTypes.object.isRequired,
-  signIn: PropTypes.func.isRequired
+  signUp: PropTypes.func.isRequired
 }
 
-const WrappedLoginForm = Form.create()(LoginForm)
+const WrappedSignUpForm = Form.create()(SignUpForm)
 
-export default WrappedLoginForm
+export default WrappedSignUpForm
