@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom'
 import SignInForm from '../../containers/auth/sign-in-form'
 import SignUpForm from '../../containers/auth/sign-up-form'
 
+import Logo from '../../assets/images/logo.png'
+
 class AuthPage extends Component {
   render () {
     return (
@@ -17,7 +19,9 @@ class AuthPage extends Component {
             marginBottom: '50px'
           }}
         >
-          <NavLink to='/'>LinkedIn React</NavLink>
+          <NavLink to='/'>
+            <img src={Logo} alt='logo' style={{ width: '16px' }} />
+          </NavLink>
           <Menu mode='horizontal' style={{ lineHeight: '64px' }}>
             <Menu.Item key='auth'>
               <NavLink to='/auth'>Login</NavLink>
