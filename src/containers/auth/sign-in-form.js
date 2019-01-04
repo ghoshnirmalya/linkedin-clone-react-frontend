@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import TokenStore from '../../lib/token-store'
-import LoginForm from '../../components/functional/auth/login-form'
+import SignInForm from '../../components/functional/auth/sign-in-form'
 import { signIn } from '../../actions/auth'
 
 const mapStateToProps = state => ({
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({ signIn }, dispatch)
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginForm)
+)(SignInForm)

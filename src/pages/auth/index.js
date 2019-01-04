@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Layout, Menu, Col, Row } from 'antd'
 import { NavLink } from 'react-router-dom'
 
-import LoginForm from '../../containers/auth/login-form'
+import SignInForm from '../../containers/auth/sign-in-form'
 import SignUpForm from '../../containers/auth/sign-up-form'
 
 class AuthPage extends Component {
@@ -32,7 +32,7 @@ class AuthPage extends Component {
         >
           <Col span={6}>
             <h2>Sign in</h2>
-            <LoginForm />
+            <SignInForm />
           </Col>
           <Col span={6}>
             <h2>Sign up</h2>

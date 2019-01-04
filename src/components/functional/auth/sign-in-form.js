@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Icon, Input, Button } from 'antd'
 
-class LoginForm extends Component {
+class SignInForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
@@ -56,11 +56,11 @@ class LoginForm extends Component {
   };
 }
 
-LoginForm.propTypes = {
+SignInForm.propTypes = {
   authenticationUI: PropTypes.object.isRequired,
   signIn: PropTypes.func.isRequired
 }
 
-const WrappedLoginForm = Form.create()(LoginForm)
+const WrappedLoginForm = Form.create()(SignInForm)
 
 export default WrappedLoginForm
