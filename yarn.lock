@@ -5686,20 +5686,21 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
-kitsu-core@^6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/kitsu-core/-/kitsu-core-6.4.0.tgz#4fa913dc6f9744c2e1581b215c95e0a48c28f1f1"
+kitsu-core@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/kitsu-core/-/kitsu-core-7.0.0.tgz#ae690f3c52c73e476287bfd4caf0f67297fae815"
+  integrity sha512-6uBdhFlrSgfAGZsVgtZrq7uLBVbdVe7Q/XGTfGVT8HTcyipOo4peZNs22i+Vm0J42Dkm25ZEPNhHhqoqphxEDw==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-kitsu@^6.5.1:
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/kitsu/-/kitsu-6.5.1.tgz#3a8a8e4b0eda37194b26b342da847dcc1da61b2b"
-  integrity sha512-MCdfPqKHbNM0fgi6uey7bwBH2gIJDiZC29sRgiqHh7CV5FIkr/xirZn7KfQ4X3izMpXrTa7IKVlsXtbxPU71cg==
+kitsu@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/kitsu/-/kitsu-7.0.0.tgz#d07d0e395b04811debfde8f0667d608666681b91"
+  integrity sha512-/nK6K/Sl9+ZhmMx4kAm3sF4dKIptxiV6zWnDEsuIdrhyYP82xVoA8f3NbMFvLeYKSu3B4LhbnE5c/cbJ/5ysxg==
   dependencies:
     "@babel/runtime" "^7.0.0"
     axios "^0.18.0"
-    kitsu-core "^6.4.0"
+    kitsu-core "^7.0.0"
     pluralize "^7.0.0"
 
 kleur@^2.0.1:
