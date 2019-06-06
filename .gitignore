@@ -61,5 +61,8 @@ typings/
 # Ignore .env.test
 .env.test
 
+# Ignore .env.test
+.env
+
 # Ignore .env.production
 .env.production
