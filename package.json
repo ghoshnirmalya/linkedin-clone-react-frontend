@@ -24,16 +24,13 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "snyk": "^1.161.1"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "eject": "react-scripts eject"
   },
   "husky": {
     "hooks": {
@@ -82,6 +79,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "snyk": true
+  ]
 }
