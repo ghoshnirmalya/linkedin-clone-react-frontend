@@ -14,7 +14,7 @@
     "antd": "^3.19.2",
     "connected-react-router": "^6.4.0",
     "history": "^4.9.0",
-    "immer": "^3.1.2",
+    "immer": "^4.0.0",
     "kitsu": "^7.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
