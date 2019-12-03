@@ -1975,12 +1975,13 @@ aws4@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
 
-axios@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+axios@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"
+  integrity sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ==
   dependencies:
-    follow-redirects "^1.3.0"
-    is-buffer "^1.1.5"
+    follow-redirects "1.5.10"
+    is-buffer "^2.0.2"
 
 axobject-query@^2.0.2:
   version "2.0.2"
@@ -4440,7 +4441,14 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-follow-redirects@^1.0.0, follow-redirects@^1.3.0:
+follow-redirects@1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
+  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
+  dependencies:
+    debug "=3.1.0"
+
+follow-redirects@^1.0.0:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.8.tgz#1dbfe13e45ad969f813e86c00e5296f525c885a1"
   dependencies:
@@ -5295,6 +5303,11 @@ is-buffer@^1.0.2, is-buffer@^1.1.5:
 is-buffer@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.3.tgz#4ecf3fcf749cbd1e472689e109ac66261a25e725"
+
+is-buffer@^2.0.2:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.4.tgz#3e572f23c8411a5cfd9557c849e3665e0b290623"
+  integrity sha512-Kq1rokWXOPXWuaMAqZiJW4XxsmD9zGx9q4aePabbn3qCRGedtH7Cm+zV8WETitMfu1wdh+Rvd6w5egwSngUX2A==
 
 is-builtin-module@^1.0.0:
   version "1.0.0"
@@ -6176,18 +6189,19 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
-kitsu-core@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/kitsu-core/-/kitsu-core-7.0.3.tgz#be138278ae5a3286ff62a60dfe321818f3a181cb"
+kitsu-core@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/kitsu-core/-/kitsu-core-8.0.0.tgz#e82a4e98f322fcb23d400fa552569e47a428db0e"
+  integrity sha512-GIdMXkMuUTOZdYhyfyAbJmbkQKegyTSSIeWBbFgTIIKQnQqqRoon080go9ge9dNaXfHUenOcMdNM5S3TYzmVjA==
 
-kitsu@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/kitsu/-/kitsu-7.0.3.tgz#82ebeac374715d3013ff3a2bb4323f83f58f7dfd"
+kitsu@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/kitsu/-/kitsu-8.0.0.tgz#34d35b12f72a80604c9cbbf52ca2ecc83d863971"
+  integrity sha512-OGl6culIrI2OImPTTmnCDKfRyMQhT9G/KdTmFL0Z9r3pzFt5EOrVQSf1qS1j6Mx9yp/Yh3E3cH/dk00vIKAZ8Q==
   dependencies:
-    "@babel/runtime" "^7.0.0"
-    axios "^0.18.0"
-    kitsu-core "^7.0.3"
-    pluralize "^7.0.0"
+    axios "^0.19.0"
+    kitsu-core "^8.0.0"
+    pluralize "^8.0.0"
 
 kleur@^3.0.2:
   version "3.0.3"
@@ -7576,9 +7590,10 @@ please-upgrade-node@^3.1.1:
   dependencies:
     semver-compare "^1.0.0"
 
-pluralize@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
+pluralize@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
 pn@^1.1.0:
   version "1.1.0"
